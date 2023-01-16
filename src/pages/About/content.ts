@@ -184,7 +184,7 @@ export const BOARD_CONTENT = {
       id: 3,
       image: ADEOLU_ADEOSUN,
       name: "Adeolu Adeosun",
-      position: "HEAD, FINANCE & CORPORATE SERVICES",
+      position: "CHIEF FINANCIAL OFFICER",
       shortBio: `Adeolu Adeosun is the Head, Finance and Corporate Services at Shared Agent Network Expansion...`,
       shortBio2: `Adeolu Adeosun is the Head, Finance and Corporate Services at Shared Agent Network Expansion Facilities Limited (SANEF). He has over 14...`,
       fullBio: `Adeolu Adeosun is the Head, Finance and Corporate Services at Shared Agent Network Expansion Facilities Limited (SANEF). He has over 14 years’ experience across several functions ranging from Auditing to Risk Management, Environmental & Social Risk Management, Budgetary Control and Financial Reporting. 
