@@ -23,7 +23,7 @@ const Carousel = () => {
   return (
     <div
       id="carouselExampleCaptions"
-      className={`${style.carousel_item} carousel slide h-[670px] md:h-[630px] w-screen overflow-hidden`}
+      className={`${style.carousel_item} carousel slide h-[670px] md:h-[630px] w-screen`}
       data-bs-ride="carousel"
     >
       <Navbar />
