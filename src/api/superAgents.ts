@@ -1,5 +1,5 @@
 import { ISuperAgentRequest, IUpdateSuperAgentRequest } from "types/superAgent";
-import { axiosPrivate } from "./axios";
+import api, { axiosPrivate } from "./axios";
 
 export const getAllSuperAgents = async (
   pageNumber: number = 0,
@@ -10,6 +10,11 @@ export const getAllSuperAgents = async (
     `/super-agents?pageNumber=${pageNumber}&superAgentPerPage=${superAgentPerPage}`,
     options
   );
+  return data.data;
+};
+
+export const getAllSuperAgentNames = async (options = {}) => {
+  const { data } = await api.get("/super-agents/website");
   return data.data;
 };
 

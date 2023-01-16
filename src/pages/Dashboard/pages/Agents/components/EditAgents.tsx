@@ -142,8 +142,15 @@ const SubUpdateForm = () => {
 const EditAgents = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { agentData, handleSubmit, handlePress, handleAgentDataChange } =
-    useEditAgentForm(id);
+  const {
+    agentData,
+    handleSubmit,
+    onSubmit,
+    errors,
+    register,
+    handlePress,
+    handleAgentDataChange
+  } = useEditAgentForm(id);
   return (
     <DashboardLayout>
       <AgentsHeader />
@@ -171,7 +178,7 @@ const EditAgents = () => {
 
           <form
             className="container px-8 pb-8 mx-auto space-y-10"
-            onSubmit={handleSubmit}
+            onSubmit={handleSubmit(onSubmit)}
           >
             <div className="flex flex-col space-y-5">
               {/* First name & Surname */}
@@ -260,6 +267,8 @@ const EditAgents = () => {
                         { value: "female", name: "Female" }
                       ]}
                       selectPlaceholder="Select gender"
+                      register={register}
+                      errors={errors}
                     />
                   </div>
                 </div>
@@ -332,6 +341,8 @@ const EditAgents = () => {
                         { value: "female", name: "Female" }
                       ]}
                       selectPlaceholder="Select gender"
+                      register={register}
+                      errors={errors}
                     />
                   </div>
                 </div>
@@ -352,6 +363,8 @@ const EditAgents = () => {
                         { value: "Abuja", name: "Abuja" }
                       ]}
                       selectPlaceholder="Select gender"
+                      register={register}
+                      errors={errors}
                     />
                   </div>
                 </div>

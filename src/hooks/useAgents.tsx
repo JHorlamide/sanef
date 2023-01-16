@@ -9,15 +9,24 @@ import {
   registerNewAgent,
   getNumberOfNewReqByMonth,
   getNumberOfApprovedAgentByMonth,
-  getAgentDetails
+  getAgentDetails,
+  registerNewAgentByUser
 } from "api/agents";
 import toast from "react-hot-toast";
 import { monthsList } from "utils/constants";
+import { useForm } from "react-hook-form";
+import useStateLGA from "./useStateLga";
+import { StateType } from "hooks/useStateLga";
+import { getAllSuperAgentNames } from "api/superAgents";
 
 type MonthType = {
   numberOfDocuments: number;
   month: string;
 };
+
+interface ISuperAgent {
+  companyName: string;
+}
 
 export type AgentType = {
   email: string;
@@ -239,6 +248,11 @@ export const useAgentAnalytics = () => {
 };
 
 export const useAgentForm = (state: string, LGA: string | undefined) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm();
   const navigate = useNavigate();
   const [agentData, setAgentData] = useState<AgentType>({
     email: "",
@@ -261,10 +275,9 @@ export const useAgentForm = (state: string, LGA: string | undefined) => {
     });
   };
 
-  const handleSubmit = async (
-    e: React.FormEvent<HTMLFormElement> | React.KeyboardEvent<HTMLButtonElement>
-  ) => {
-    e.preventDefault();
+  const onSubmit = async (data: any) => {
+    // e.preventDefault();
+    console.log(data);
     const agentObj: IAgentRequest = {
       email: agentData.email,
       firstName: agentData.firstName,
@@ -298,12 +311,15 @@ export const useAgentForm = (state: string, LGA: string | undefined) => {
     e.preventDefault();
 
     if (e.key === "enter") {
-      handleSubmit(e);
+      onSubmit(e);
     }
   };
 
   return {
     agentData,
+    onSubmit,
+    register,
+    errors,
     handleSubmit,
     handlePress,
     handleCompanyDataChange
@@ -311,6 +327,11 @@ export const useAgentForm = (state: string, LGA: string | undefined) => {
 };
 
 export const useEditAgentForm = (agentId: string | undefined) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm();
   const navigate = useNavigate();
   const [agentData, setAgentData] = useState<AgentType>({
     email: "",
@@ -357,10 +378,8 @@ export const useEditAgentForm = (agentId: string | undefined) => {
     });
   };
 
-  const handleSubmit = async (
-    e: React.FormEvent<HTMLFormElement> | React.KeyboardEvent<HTMLButtonElement>
-  ) => {
-    e.preventDefault();
+  const onSubmit = async (data: any) => {
+    console.log(data);
     const agentObj: IUpdateAgent = {
       id: agentId,
       email: agentData.email,
@@ -391,16 +410,113 @@ export const useEditAgentForm = (agentId: string | undefined) => {
     e.preventDefault();
 
     if (e.key === "enter") {
-      handleSubmit(e);
+      onSubmit(e);
     }
   };
 
   return {
     agentData,
+    onSubmit,
+    register,
+    errors,
     handleSubmit,
     handlePress,
     handleAgentDataChange
   };
 };
 
+export const useRegisterAgent = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm();
+  const navigate = useNavigate();
+  const DEFAULT_STATE_TO_FETCH_LGA = "lagos";
+  const [superAgents, setSuperAgents] = useState<ISuperAgent[]>([]);
+  const [stateToFetchLGA, setStateToFetchLGA] = useState<string>("");
+
+  const { statesList, LGAsList } = useStateLGA(
+    stateToFetchLGA ? stateToFetchLGA : DEFAULT_STATE_TO_FETCH_LGA
+  );
+
+  const [query, setQuery] = useState("");
+  const [selectedState, setSelectedState] = useState<StateType>(statesList[0]);
+  const [selectedLGA, setSelectedLGA] = useState(LGAsList && LGAsList[0]);
+  const regex = new RegExp(`${query}`, "gi");
+
+  const filterState =
+    query === ""
+      ? statesList
+      : statesList.filter((state) => state.name.match(regex));
+
+  const filterLGA =
+    query === "" ? LGAsList : LGAsList?.filter((lga) => lga.match(regex));
+
+  useEffect(() => {
+    const controller = new AbortController();
+    const { signal } = controller;
+
+    getAllSuperAgentNames({ signal })
+      .then((response) => {
+        setSuperAgents(response);
+      })
+      .catch((error) => {
+        if (error.response) {
+          return toast.error(error.response.data.message);
+        }
+
+        toast.error(error.message);
+      });
+  }, []);
+
+  const onSubmit = (data: any) => {
+    console.log("Form Data: ", { selectedLGA, selectedState, ...data });
+    const agentObj: IAgentRequest = {
+      email: data.email,
+      firstName: data.firstName,
+      surname: data.lastName,
+      businessName: data.businessName,
+      state: stateToFetchLGA,
+      LGA: selectedLGA as string,
+      approved: false,
+      createdDate: new Date(),
+      gender: data.gender,
+      choiceOfSuperAgent: data.superAgent,
+      preferredPhoneNumber: data.preferredPhoneNumber,
+      alternativePhoneNumber: data.alternatePhoneNumber,
+      proposedAgentService: data.proposedAgencyService
+    };
+
+    registerNewAgentByUser(agentObj)
+      .then((response) => {
+        toast.success(response.message);
+        navigate("/become-agent");
+      })
+      .catch((error) => {
+        if (error.response) {
+          return toast.error(error.response.data.message);
+        }
+
+        toast.error(error.message);
+      });
+  };
+
+  return {
+    query,
+    selectedLGA,
+    selectedState,
+    register,
+    errors,
+    onSubmit,
+    handleSubmit,
+    filterLGA,
+    filterState,
+    superAgents,
+    setStateToFetchLGA,
+    setQuery,
+    setSelectedState,
+    setSelectedLGA
+  };
+};
 export default useAgents;

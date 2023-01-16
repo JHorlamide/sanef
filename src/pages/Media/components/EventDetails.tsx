@@ -4,7 +4,7 @@ import Layout from "pages/Layout";
 import Navbar from "components/layout/Navbar/Navbar";
 import Footer from "components/layout/Footer";
 import GalleryModal from "./GalleryModal";
-import { useData } from "hooks/useFetch";
+import { useCMSDataFetch } from "hooks/useFetch";
 import { EventsType } from "types/news";
 import { Spinner } from "flowbite-react";
 import moment from "moment";
@@ -14,7 +14,7 @@ const EventDetails = () => {
   const { id } = useParams();
   const queries = `*[_type == 'events' && _id == '${id}'][0]`;
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const { data } = useData<EventsType>(queries);
+  const { data } = useCMSDataFetch<EventsType>(queries);
 
   const handleModalOpen = () => {
     setIsOpen((prevState) => !prevState);

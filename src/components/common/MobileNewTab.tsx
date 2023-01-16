@@ -1,6 +1,6 @@
 import { Tab } from "@headlessui/react";
 import CustomCard from "components/widgets/Cards/Card";
-import { useData } from "hooks/useFetch";
+import { useCMSDataFetch } from "hooks/useFetch";
 import { GET_NEWS_QUERIES } from "utils/constants";
 import { NewsType } from "types/news";
 import moment from "moment";
@@ -12,7 +12,7 @@ function classNames(...classes: any) {
 }
 
 export default function MobileNewTab() {
-  const { data } = useData<NewsType[]>(GET_NEWS_QUERIES);
+  const { data } = useCMSDataFetch<NewsType[]>(GET_NEWS_QUERIES);
   if (!data) {
     return (
       <div className="block md:hidden container mx-auto mt-20 text-[28px] text-center font-bold h-80">

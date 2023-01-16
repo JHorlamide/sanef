@@ -27,8 +27,15 @@ const AddAgents = () => {
   const [query, setQuery] = useState("");
   const [selectedState, setSelectedState] = useState<StateType>(statesList[0]);
   const [selectedLGA, setSelectedLGA] = useState(LGAsList && LGAsList[0]);
-  const { agentData, handleSubmit, handlePress, handleCompanyDataChange } =
-    useAgentForm(stateToFetchLGA, selectedLGA);
+  const {
+    agentData,
+    handleSubmit,
+    onSubmit,
+    register,
+    errors,
+    handlePress,
+    handleCompanyDataChange
+  } = useAgentForm(stateToFetchLGA, selectedLGA);
   const regex = new RegExp(`${query}`, "gi");
 
   const filterState =
@@ -52,7 +59,7 @@ const AddAgents = () => {
 
           <form
             className="container px-8 mx-auto space-y-10"
-            onSubmit={handleSubmit}
+            onSubmit={handleSubmit(onSubmit)}
           >
             <div className="flex flex-col space-y-5">
               {/* First name & Surname */}
@@ -141,6 +148,8 @@ const AddAgents = () => {
                         { value: "female", name: "Female" }
                       ]}
                       selectPlaceholder="Select gender"
+                      register={register}
+                      errors={errors}
                     />
                   </div>
                 </div>

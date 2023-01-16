@@ -8,6 +8,7 @@ export interface CustomInputProps {
 }
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  inputType?: string;
   id: string;
   label: string;
   required?: boolean;
@@ -27,6 +28,7 @@ export const Input: React.FC<InputProps> = ({
   register,
   errors,
   className,
+  inputType,
   parentClassName,
   validationSchema,
   ...rest
@@ -37,6 +39,7 @@ export const Input: React.FC<InputProps> = ({
         {label}
         {required && "*"}
       </label>
+
       <input
         id={id}
         type={type}

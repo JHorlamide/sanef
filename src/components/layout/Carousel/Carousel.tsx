@@ -23,7 +23,7 @@ const Carousel = () => {
   return (
     <div
       id="carouselExampleCaptions"
-      className={`${style.carousel_item} carousel slide h-[670px] md:h-[630px]`}
+      className={`${style.carousel_item} carousel slide h-[670px] md:h-[630px] w-screen overflow-hidden`}
       data-bs-ride="carousel"
     >
       <Navbar />
@@ -34,10 +34,10 @@ const Carousel = () => {
           {/* 1st Slid */}
           <div
             className={`bg-mobile_home_deepening_financial_inclusion md:bg-desktop_home_deepening_financial_inclusion 
-            bg-center bg-cover h-[670px] bg-no-repeat items-center carousel-item active w-full float-left
-            py-40 md:py-[165px] lg:py-48`}
+            bg-center bg-cover h-[670px] bg-no-repeat items-center carousel-item active w-screen float-left
+            py-40 md:py-[165px] lg:py-48 overflow-hidden`}
           >
-            <div className="flex flex-col space-y-10 px-5 md:px-40">
+            <div className="flex flex-col px-5 space-y-10 md:px-40">
               <h1
                 className="max-w-lg text-4xl text-left text-white mb-3 font-extrabold
                 md:max-w-6xl md:leading-snug md:text-[45px]"
@@ -59,10 +59,10 @@ const Carousel = () => {
           {/* 2nd Slid */}
           <div
             className={`bg-mobile_home_centre_of_excellence md:bg-desktop_home_centre_of_excellence 
-            bg-center bg-cover bg-no-repeat items-center carousel-item relative w-full float-left
-            py-40 md:py-[165px] lg:py-48 h-[670px]`}
+            bg-center bg-cover bg-no-repeat items-center carousel-item relative w-screen float-left
+            py-40 md:py-[165px] lg:py-48 h-[670px] overflow-hidden`}
           >
-            <div className="flex flex-col space-y-10 px-5 md:px-40">
+            <div className="flex flex-col px-5 space-y-10 md:px-40">
               <h1
                 className="max-w-lg text-4xl text-left text-white mb-3 font-extrabold
                 md:font-extrabold md:max-w-6xl md:leading-snug md:text-[45px]"
@@ -83,10 +83,10 @@ const Carousel = () => {
           {/* 3rd Slid */}
           <div
             className={`bg-mobile_home_empowering_the_ecosystem md:bg-desktop_home_empowering_the_ecosystem 
-            bg-center bg-cover h-[670px] bg-no-repeat items-center carousel-item relative w-full float-left
-            py-40 md:py-[165px] lg:py-48`}
+            bg-center bg-cover h-[670px] bg-no-repeat items-center carousel-item relative w-screen float-left
+            py-40 md:py-[165px] lg:py-48 overflow-hidden`}
           >
-            <div className="flex flex-col space-y-10 px-5 md:px-40">
+            <div className="flex flex-col px-5 space-y-10 md:px-40">
               <h1
                 className="max-w-lg text-4xl text-left text-white mb-3 font-extrabold
                 md:font-extrabold md:max-w-6xl md:leading-snug md:text-[45px]"
@@ -107,10 +107,10 @@ const Carousel = () => {
           {/* 4th Slid */}
           <div
             className={`bg-mobile_home_enhancing_knowledge md:bg-desktop_home_enhancing_knowledge 
-            bg-center bg-cover bg-no-repeat items-center carousel-item relative w-full float-left
-            py-40 md:py-[165px] lg:py-48 h-[670px]`}
+            bg-center bg-cover bg-no-repeat items-center carousel-item relative w-screen float-left
+            py-40 md:py-[165px] lg:py-48 h-[670px] overflow-hidden`}
           >
-            <div className="flex flex-col space-y-10 px-5 md:px-40">
+            <div className="flex flex-col px-5 space-y-10 md:px-40">
               <h1
                 className="max-w-lg text-4xl text-left text-white mb-3 font-extrabold
                 md:font-extrabold md:max-w-6xl md:leading-snug md:text-[45px]"
@@ -136,8 +136,7 @@ const Carousel = () => {
           justify-center items-center right-28 md:right-24 lg:right-52 top-[490px]"
         >
           <div
-            className="carousel-indicators mt-3 md:mt-0 flex justify-start items-start
-            md:justify-end lg:items-end"
+            className="flex items-start justify-start mt-3 carousel-indicators md:mt-0 md:justify-end lg:items-end"
             id="carousel_indicator_container"
           >
             <button

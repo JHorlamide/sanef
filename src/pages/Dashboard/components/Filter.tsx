@@ -1,8 +1,14 @@
 import React, { useState } from "react";
 import CustomSelect from "components/widgets/CustomInput/CustomSelect";
 import { FILTER_ICON2 } from "assets/icons";
+import { useForm } from "react-hook-form";
 
 const Filter = () => {
+  const {
+    register,
+    // handleSubmit,
+    formState: { errors }
+  } = useForm();
   const [filter, setFilter] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -12,9 +18,10 @@ const Filter = () => {
   return (
     <div className="relative">
       <CustomSelect
+        errors={errors}
+        register={register}
         id="gender"
-        className="rounded-full border border-gray-300 outline-buttonColor 
-        focus:border-buttonColor focus:ring-buttonColor py-2 w-52 px-10"
+        className="px-10 py-2 border border-gray-300 rounded-full outline-buttonColor focus:border-buttonColor focus:ring-buttonColor w-52"
         selectProps={{
           name: "gender",
           value: filter,

@@ -1,121 +1,104 @@
-import React, { Fragment, useState } from "react";
+import { Fragment } from "react";
 import Image from "components/widgets/Image/Image";
 import style from "../BecomeAnAgent.module.css";
-import CustomInput from "components/widgets/CustomInput/CustomInput";
+import { Input } from "components/widgets/CustomInput/CustomInput";
 import CustomBtn from "components/widgets/CustomBtn/CustomBtn";
 import CustomSelect from "components/widgets/CustomInput/CustomSelect";
 import { CHECK_LIST } from "assets/icons";
-import { useNavigate } from "react-router-dom";
 
 import { Combobox, Transition } from "@headlessui/react";
 import { BsCheck2 } from "react-icons/bs";
 import { HiOutlineChevronDown } from "react-icons/hi";
-import { StateType } from "hooks/useStateLga";
-import useStateLga from "hooks/useStateLga";
-import { registerNewAgentByUser } from "api/agents";
-import { IAgentRequest } from "types/agent";
-import toast from "react-hot-toast";
+import { useRegisterAgent } from "hooks/useAgents";
 
-interface FormData {
-  firstName: string;
-  lastName: string;
-  email: string;
-  gender: string;
-  businessName: string;
-  superAgent: string;
-  proposedAgencyService: string;
-  preferredPhoneNumber: string;
-  alternatePhoneNumber: string;
-}
+// import { StateType } from "hooks/useStateLga";
+// import useStateLga from "hooks/useStateLga";
+// import { registerNewAgentByUser } from "api/agents";
+// import { IAgentRequest } from "types/agent";
+// import toast from "react-hot-toast";
+
+// interface FormData {
+//   firstName: string;
+//   lastName: string;
+//   email: string;
+//   gender: string;
+//   businessName: string;
+//   superAgent: string;
+//   proposedAgencyService: string;
+//   preferredPhoneNumber: string;
+//   alternatePhoneNumber: string;
+// }
 
 const Agent = () => {
-  const navigate = useNavigate();
-  const DEFAULT_STATE_TO_FETCH_LGA = "lagos";
-  const [stateToFetchLGA, setStateToFetchLGA] = useState<string>("");
+  const {
+    query,
+    register,
+    errors,
+    onSubmit,
+    handleSubmit,
+    filterLGA,
+    filterState,
+    setStateToFetchLGA,
+    setQuery,
+    setSelectedState,
+    setSelectedLGA,
+    selectedLGA,
+    selectedState,
+    superAgents
+  } = useRegisterAgent();
 
-  const { statesList, LGAsList } = useStateLga(
-    stateToFetchLGA ? stateToFetchLGA : DEFAULT_STATE_TO_FETCH_LGA
-  );
+  // const navigate = useNavigate();
+  // const DEFAULT_STATE_TO_FETCH_LGA = "lagos";
+  // const [stateToFetchLGA, setStateToFetchLGA] = useState<string>("");
 
-  const [query, setQuery] = useState("");
-  const [selectedState, setSelectedState] = useState<StateType>(statesList[0]);
-  const [selectedLGA, setSelectedLGA] = useState(LGAsList && LGAsList[0]);
-  const regex = new RegExp(`${query}`, "gi");
+  // const { statesList, LGAsList } = useStateLga(
+  //   stateToFetchLGA ? stateToFetchLGA : DEFAULT_STATE_TO_FETCH_LGA
+  // );
 
-  const filterState =
-    query === ""
-      ? statesList
-      : statesList.filter((state) => state.name.match(regex));
+  // const [query, setQuery] = useState("");
+  // const [selectedState, setSelectedState] = useState<StateType>(statesList[0]);
+  // const [selectedLGA, setSelectedLGA] = useState(LGAsList && LGAsList[0]);
+  // const regex = new RegExp(`${query}`, "gi");
 
-  const filterLGA =
-    query === "" ? LGAsList : LGAsList?.filter((lga) => lga.match(regex));
+  // const filterState =
+  //   query === ""
+  //     ? statesList
+  //     : statesList.filter((state) => state.name.match(regex));
 
-  const [formData, setFormData] = useState<FormData>({
-    firstName: "",
-    lastName: "",
-    email: "",
-    gender: "",
-    superAgent: "",
-    businessName: "",
-    proposedAgencyService: "",
-    preferredPhoneNumber: "",
-    alternatePhoneNumber: ""
-  });
+  // const filterLGA =
+  //   query === "" ? LGAsList : LGAsList?.filter((lga) => lga.match(regex));
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
+  // const onSubmit = (data: any) => {
+  //   console.log("Form Data: ", { selectedLGA, selectedState, ...data });
+  //   const agentObj: IAgentRequest = {
+  //     email: data.email,
+  //     firstName: data.firstName,
+  //     surname: data.lastName,
+  //     businessName: data.businessName,
+  //     state: stateToFetchLGA,
+  //     LGA: selectedLGA as string,
+  //     approved: false,
+  //     createdDate: new Date(),
+  //     gender: data.gender,
+  //     choiceOfSuperAgent: data.superAgent,
+  //     preferredPhoneNumber: data.preferredPhoneNumber,
+  //     alternativePhoneNumber: data.alternatePhoneNumber,
+  //     proposedAgentService: data.proposedAgencyService
+  //   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const agentObj: IAgentRequest = {
-      email: formData.email,
-      firstName: formData.firstName,
-      surname: formData.lastName,
-      businessName: formData.businessName,
-      state: stateToFetchLGA,
-      LGA: selectedLGA as string,
-      approved: false,
-      createdDate: new Date(),
-      gender: formData.gender,
-      choiceOfSuperAgent: formData.superAgent,
-      preferredPhoneNumber: formData.preferredPhoneNumber,
-      alternativePhoneNumber: formData.alternatePhoneNumber,
-      proposedAgentService: formData.proposedAgencyService
-    };
+  //   registerNewAgentByUser(agentObj)
+  //     .then((response) => {
+  //       toast.success(response.message);
+  //       navigate("/become-agent");
+  //     })
+  //     .catch((error) => {
+  //       if (error.response) {
+  //         return toast.error(error.response.data.message);
+  //       }
 
-    registerNewAgentByUser(agentObj)
-      .then((response) => {
-        toast.success(response.message);
-        clearForm();
-        navigate("/become-agent");
-      })
-      .catch((error) => {
-        if (error.response) {
-          return toast.error(error.response.data.message);
-        }
-
-        toast.error(error.message);
-      });
-    console.log({ state: selectedState, lga: selectedLGA, ...formData });
-  };
-
-  const clearForm = () => {
-    setFormData({
-      firstName: "",
-      lastName: "",
-      email: "",
-      gender: "",
-      superAgent: "",
-      businessName: "",
-      proposedAgencyService: "",
-      preferredPhoneNumber: "",
-      alternatePhoneNumber: ""
-    });
-  };
+  //       toast.error(error.message);
+  //     });
+  // };
 
   return (
     <Fragment>
@@ -270,68 +253,80 @@ const Agent = () => {
           </div>
 
           <form
-            onSubmit={handleSubmit}
+            onSubmit={handleSubmit(onSubmit)}
             className="flex flex-col px-5 space-y-10 md:space-y-5 md:justify-center py-14 md:py-12 md:px-10 md:w-fit"
           >
             {/* FIRST & LAST NAME */}
             <div className="container flex flex-col space-y-10 md:flex-row md:space-y-0 md:space-x-4">
               <div className="w-full space-y-2">
-                <label htmlFor="firstName">First Name</label>
-                <CustomInput
+                <Input
+                  type="text"
                   id="firstName"
-                  className="w-full py-3 border border-gray-300 rounded-full outline-buttonColor focus:border-buttonColor focus:ring-buttonColor"
-                  inputProps={{
-                    type: "text",
-                    name: "firstName",
-                    value: formData.firstName,
-                    onChange: handleChange
+                  label="First Name"
+                  errors={errors}
+                  register={register}
+                  required={true}
+                  validationSchema={{
+                    required: "First name is required"
                   }}
+                  className="w-full py-3 border border-gray-300 rounded-full outline-buttonColor focus:border-buttonColor focus:ring-buttonColor"
+                  data-testid="emailInput"
+                  parentClassName="space-y-2"
                 />
               </div>
 
               <div className="w-full space-y-2">
-                <label htmlFor="lastName">Last Name</label>
-                <CustomInput
+                <Input
+                  type="text"
                   id="lastName"
-                  className="w-full py-3 border border-gray-300 rounded-full outline-buttonColor focus:border-buttonColor focus:ring-buttonColor"
-                  inputProps={{
-                    type: "text",
-                    name: "lastName",
-                    value: formData.lastName,
-                    onChange: handleChange
+                  label="Last Name"
+                  errors={errors}
+                  register={register}
+                  required={true}
+                  validationSchema={{
+                    required: "Last name is required"
                   }}
+                  className="w-full py-3 border border-gray-300 rounded-full outline-buttonColor focus:border-buttonColor focus:ring-buttonColor"
+                  data-testid="emailInput"
+                  parentClassName="space-y-2"
                 />
               </div>
             </div>
 
             {/* BUSINESS NAME */}
             <div className="container space-y-2">
-              <label htmlFor="businessName">Business Name</label>
-              <CustomInput
+              <Input
+                type="text"
                 id="businessName"
-                className="w-full py-3 border border-gray-300 rounded-full outline-buttonColor focus:border-buttonColor focus:ring-buttonColor"
-                inputProps={{
-                  type: "text",
-                  name: "businessName",
-                  value: formData.businessName,
-                  onChange: handleChange
+                label="Business Name"
+                errors={errors}
+                register={register}
+                required={true}
+                validationSchema={{
+                  required: "Business name is required"
                 }}
+                className="w-full py-3 border border-gray-300 rounded-full outline-buttonColor focus:border-buttonColor focus:ring-buttonColor"
+                data-testid="emailInput"
+                parentClassName="space-y-2"
               />
             </div>
 
             {/* EMAIL & GENDER  */}
             <div className="container flex flex-col space-y-10 md:space-y-0 md:space-x-4 md:flex-row">
               <div className="w-full space-y-2">
-                <label htmlFor="email">Email Address</label>
-                <CustomInput
+                <Input
+                  type="text"
                   id="email"
-                  className="w-full py-3 border border-gray-300 rounded-full outline-buttonColor focus:border-buttonColor focus:ring-buttonColor"
-                  inputProps={{
-                    type: "text",
-                    name: "email",
-                    value: formData.email,
-                    onChange: handleChange
+                  label="Email Address"
+                  errors={errors}
+                  register={register}
+                  required={true}
+                  validationSchema={{
+                    required: "Email is required"
                   }}
+                  className="w-full py-3 border border-gray-300 rounded-full outline-buttonColor focus:border-buttonColor focus:ring-buttonColor"
+                  data-testid="emailInput"
+                  parentClassName="space-y-2"
                 />
               </div>
 
@@ -340,16 +335,14 @@ const Agent = () => {
                 <CustomSelect
                   id="gender"
                   className="w-full py-3 border border-gray-300 rounded-full outline-buttonColor focus:border-buttonColor focus:ring-buttonColor"
-                  selectProps={{
-                    name: "gender",
-                    value: formData.gender,
-                    onChange: handleChange
-                  }}
+                  selectProps={{ name: "gender" }}
                   selectOptions={[
                     { value: "male", name: "Male" },
                     { value: "female", name: "Female" }
                   ]}
                   selectPlaceholder="Select a gender"
+                  errors={errors}
+                  register={register}
                 />
               </div>
             </div>
@@ -357,51 +350,37 @@ const Agent = () => {
             {/* PREFERRED & ALTERNATE PHONE NUMBER */}
             <div className="container flex flex-col space-y-10 md:space-y-0 md:space-x-4 md:flex-row">
               <div className="w-full space-y-2">
-                <label htmlFor="preferredPhoneNumber">
-                  Preferred Phone Number
-                </label>
-
-                <CustomInput
+                <Input
+                  type="text"
                   id="preferredPhoneNumber"
-                  className="relative w-full py-3 border border-gray-300 rounded-full outline-buttonColor focus:border-buttonColor focus:ring-buttonColor"
-                  inputProps={{
-                    type: "text",
-                    name: "preferredPhoneNumber",
-                    value: formData.preferredPhoneNumber,
-                    placeholder: "e.g +2347080903040",
-                    onChange: handleChange
+                  label="Preferred Phone Number"
+                  errors={errors}
+                  register={register}
+                  required={true}
+                  validationSchema={{
+                    required: "Preferred phone number is required"
                   }}
+                  className="relative w-full py-3 border border-gray-300 rounded-full outline-buttonColor focus:border-buttonColor focus:ring-buttonColor"
+                  data-testid="emailInput"
+                  parentClassName="space-y-2"
                 />
-
-                {/* <div>
-                  <p className="z-10 absolute bg-gray-200 py-[9px] px-6 rounded-full ml-1 mt-1">
-                    +234
-                  </p>
-                </div> */}
               </div>
 
               <div className="w-full space-y-2">
-                <label htmlFor="alternatePhoneNumber">
-                  Alternate Phone Number
-                </label>
-
-                <CustomInput
+                <Input
+                  type="text"
                   id="alternatePhoneNumber"
-                  className="relative w-full py-3 border border-gray-300 rounded-full outline-buttonColor focus:border-buttonColor focus:ring-buttonColor"
-                  inputProps={{
-                    type: "text",
-                    name: "alternatePhoneNumber",
-                    value: formData.alternatePhoneNumber,
-                    placeholder: "e.g +2347080903040",
-                    onChange: handleChange
+                  label="Alternate Phone Number"
+                  errors={errors}
+                  register={register}
+                  required={true}
+                  validationSchema={{
+                    required: "Alternate phone number is required"
                   }}
+                  className="relative w-full py-3 border border-gray-300 rounded-full outline-buttonColor focus:border-buttonColor focus:ring-buttonColor"
+                  data-testid="emailInput"
+                  parentClassName="space-y-2"
                 />
-
-                {/* <div>
-                  <p className="z-10 absolute bg-gray-200 py-[9px] px-6 rounded-full ml-1 mt-1">
-                    +234
-                  </p>
-                </div> */}
               </div>
             </div>
 
@@ -485,21 +464,6 @@ const Agent = () => {
                     </Transition>
                   </div>
                 </Combobox>
-                {/* <CustomSelect
-                  id="state"
-                  className="w-full py-3 border border-gray-300 rounded-full outline-buttonColor focus:border-buttonColor focus:ring-buttonColor"
-                  selectProps={{
-                    name: "state",
-                    value: formData.state,
-                    onChange: handleChange
-                  }}
-                  selectOptions={[
-                    { value: "lagos", name: "Lagos" },
-                    { value: "abia", name: "Abia" },
-                    { value: "abuja", name: "Abuja" }
-                  ]}
-                  selectPlaceholder="Select a state"
-                /> */}
               </div>
 
               <div className="w-full space-y-2">
@@ -577,37 +541,25 @@ const Agent = () => {
                     </Transition>
                   </div>
                 </Combobox>
-                {/* <CustomSelect
-                  id="lga"
-                  className="w-full py-3 border border-gray-300 rounded-full outline-buttonColor focus:border-buttonColor focus:ring-buttonColor"
-                  selectProps={{
-                    name: "lga",
-                    value: formData.lga,
-                    onChange: handleChange
-                  }}
-                  selectOptions={[
-                    { value: "ifo", name: "Ifo LGA" },
-                    { value: "eti Osa", name: "Eti Osa" }
-                  ]}
-                  selectPlaceholder="Select an LGA"
-                /> */}
               </div>
             </div>
 
             {/* PREFERRED AGENCY SERVICES/BUSINESS NAME */}
             <div className="space-y-2">
-              <label htmlFor="proposedAgencyService">
-                Proposed Agency Services/Business Address
-              </label>
-              <CustomInput
+              <Input
+                type="text"
                 id="proposedAgencyService"
-                className="w-full py-3 border border-gray-300 rounded-full outline-buttonColor focus:border-buttonColor focus:ring-buttonColor"
-                inputProps={{
-                  type: "text",
-                  name: "proposedAgencyService",
-                  value: formData.proposedAgencyService,
-                  onChange: handleChange
+                label="Proposed Agency Services/Business Address"
+                errors={errors}
+                register={register}
+                required={true}
+                validationSchema={{
+                  required:
+                    "Proposed agency services/business address is required"
                 }}
+                className="relative w-full py-3 border border-gray-300 rounded-full outline-buttonColor focus:border-buttonColor focus:ring-buttonColor"
+                data-testid="emailInput"
+                parentClassName="space-y-2"
               />
             </div>
 
@@ -620,15 +572,23 @@ const Agent = () => {
                 id="superAgent"
                 className="w-full py-3 border border-gray-300 rounded-full outline-buttonColor focus:border-buttonColor focus:ring-buttonColor"
                 selectProps={{
-                  name: "superAgent",
-                  value: formData.superAgent,
-                  onChange: handleChange
+                  name: "superAgent"
+                  // value: formData.superAgent,
+                  // onChange: handleChange
                 }}
-                selectOptions={[
-                  { value: "", name: "Business Name" },
-                  { value: "my agent 1", name: "Flutterwave" }
-                ]}
+                // selectOptions={[
+                //   { value: "", name: "Business Name" },
+                //   { value: "Flutterwave", name: "Flutterwave" }
+                // ]}
+                selectOptions={superAgents.map((superAgent) => {
+                  return {
+                    value: superAgent.companyName,
+                    name: superAgent!.companyName
+                  };
+                })}
                 selectPlaceholder="Business Name"
+                errors={errors}
+                register={register}
               />
             </div>
 

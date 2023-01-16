@@ -2,13 +2,13 @@ import React from "react";
 import RecentCard from "../../pages/Home/components/RecentCard";
 import { urlFor } from "lib/client";
 import moment from "moment";
-import { useData } from "hooks/useFetch";
+import { useCMSDataFetch } from "hooks/useFetch";
 import { NewsType } from "types/news";
 import { GET_NEWS_QUERIES } from "utils/constants";
 import { Spinner } from "flowbite-react";
 
 const RecentNews = () => {
-  const { data } = useData<NewsType[]>(GET_NEWS_QUERIES);
+  const { data } = useCMSDataFetch<NewsType[]>(GET_NEWS_QUERIES);
 
   if (!data) {
     return (

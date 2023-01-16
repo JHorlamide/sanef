@@ -1,5 +1,6 @@
-import React from "react";
 import { Spinner } from "flowbite-react";
+import React, { SelectHTMLAttributes } from "react";
+import { FieldValues, UseFormRegister } from "react-hook-form";
 
 interface SelectOptionType {
   label?: string;
@@ -7,26 +8,38 @@ interface SelectOptionType {
   name?: string;
 }
 
-export interface CustomSelectProps {
+export interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
   id: string;
   selectProps: any;
   selectPlaceholder: string;
   selectLoading?: any;
-  selectOptions: SelectOptionType[];
   className: string;
+  required?: boolean;
+  errors?: any;
+  register: UseFormRegister<FieldValues>;
+  validationSchema?: any;
+  selectOptions: SelectOptionType[];
 }
 
-const CustomSelect = ({
+const CustomSelect: React.FC<SelectProps> = ({
   id,
   className,
+  register,
   selectProps,
   selectOptions,
   selectLoading,
-  selectPlaceholder
-}: CustomSelectProps) => {
+  validationSchema,
+  selectPlaceholder,
+  ...rest
+}) => {
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
-    <select className={className} id={id} {...selectProps}>
+    <select
+      className={className}
+      id={id}
+      {...rest}
+      {...register(id, validationSchema)}
+    >
       {selectPlaceholder ? (
         <option value={""} disabled>
           {selectPlaceholder}

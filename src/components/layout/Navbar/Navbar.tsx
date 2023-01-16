@@ -33,16 +33,18 @@ const Navbar = () => {
       <nav className="relative z-50 px-5 py-5 md:px-14 md:py-0 lg:py-0">
         <div className="flex items-center justify-between">
           {/* LOGO CONTAINER */}
-          <Link to={HOME} arial-current="page">
-            <img
-              className="pt-5 w-14 md:pt-0 md:w-full lg:pt-0 lg:w-28 md:mt-5 lg:mt-5"
-              src={Logo}
-              alt="Sanef Logo"
-            />
-          </Link>
-
-          {/* NAV LINK CONTAINER */}
-          <div className="items-center justify-between hidden space-x-6 lg:flex lg:w-auto -mt-14 lg:mt-0">
+          <div className="w-16 my-0 md:w-[100px] md:my-5">
+            <Link to={HOME} arial-current="page">
+              {/* w-14 */}
+              <img
+                className="object-cover w-full mt-5 md:mt-0"
+                src={Logo}
+                alt="Sanef Logo"
+              />
+            </Link>
+          </div>
+          {/* NAV LINK CONTAINER */} {/* removed: -mt-14 */}
+          <div className="items-center justify-between hidden space-x-6 lg:flex lg:w-auto lg:mt-0">
             <div className="flex flex-col mt-4 text-[14px] font-bold lg:flex-row lg:space-x-4 lg:mt-0">
               <NavLink
                 path={HOME}
@@ -81,8 +83,6 @@ const Navbar = () => {
               />
             </div>
           </div>
-
-          {/* AUTH BUTTON */}
           <div className="hidden space-x-10 md:-mr-96 lg:mr-0 lg:flex lg:items-baseline">
             <div className="block">
               <BecomeAgent
@@ -93,6 +93,7 @@ const Navbar = () => {
               />
             </div>
 
+            {/* LOGIN BUTTON */}
             <div>
               <NavLink
                 title={"Login"}
@@ -102,19 +103,12 @@ const Navbar = () => {
               {/* <hr className="mt-1 border-2 border-white hover:border-buttonColor" /> */}
             </div>
           </div>
-
           {/* MENU ICON */}
           <div className="flex md:flex lg:hidden">
             <FiMenu
               className={`w-[50px] h-[50px] hover:text-buttonColor text-white hover:cursor-pointer mt-[26px]`}
               onClick={handleToggle}
             />
-            {/* <img
-              className={`${style.svg} hover:opacity-[0.5] hover:cursor-pointer h-8 mt-[26px]`}
-              src={Menu}
-              alt="menu icon"
-              onClick={handleToggle}
-            /> */}
           </div>
         </div>
       </nav>
@@ -164,7 +158,7 @@ const Navbar = () => {
                   path={BECOME_AGENT}
                   title={"Become an Agent"}
                   className={`px-4 py-2 border rounded-3xl font-bold bg-white hover:border-buttonColor
-                whitespace-nowrap hover:text-white hover:bg-buttonColor`}
+                  whitespace-nowrap hover:text-white hover:bg-buttonColor`}
                 />
                 {/* <CustomBtn
                   className="px-4 py-2 font-bold bg-white border rounded-3xl text-dark hover:text-white hover:bg-buttonColor hover:border-buttonColor"

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { useForm } from "react-hook-form";
 import {
   getAllSuperAgents,
   updateSuperAgent,
@@ -146,6 +147,11 @@ export const useSuperAgentForm = ({
   company_logo,
   company_data
 }: useSuperAgentFormProps) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm();
   const navigate = useNavigate();
   const [companyData, setCompanyData] = useState<CompanyDataType>({
     companyName: "",
@@ -237,10 +243,8 @@ export const useSuperAgentForm = ({
     setErrorMessage("");
   };
 
-  const handleSubmit = async (
-    e: React.FormEvent<HTMLFormElement> | React.KeyboardEvent<HTMLButtonElement>
-  ) => {
-    e.preventDefault();
+  const onSubmit = async (data: any) => {
+    console.log(data);
     validateSelectedFileSize();
 
     const superAgentObj: ISuperAgentRequest = {
@@ -268,16 +272,19 @@ export const useSuperAgentForm = ({
     e.preventDefault();
 
     if (e.key === "enter") {
-      handleSubmit(e);
+      onSubmit(e);
     }
   };
 
   return {
+    register,
+    errors,
     companyData,
     companyLogo,
     errorMessage,
     previewLogo,
     hiddenFileInput,
+    onSubmit,
     handleSubmit,
     handleFileChange,
     handlePress,

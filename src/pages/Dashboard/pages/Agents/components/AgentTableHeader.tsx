@@ -5,6 +5,7 @@ import { DOWNLOAD_ICON, FILTER_ICON2, SEARCH_ICON } from "assets/icons";
 import CustomInput from "components/widgets/CustomInput/CustomInput";
 import CustomSelect from "components/widgets/CustomInput/CustomSelect";
 import { CSVLink } from "react-csv";
+import { useForm } from "react-hook-form";
 
 interface TableHeaderProps {
   buttonText: string;
@@ -21,6 +22,11 @@ const AgentTableHeader = ({
   setSearchTerm,
   setIsApproved
 }: TableHeaderProps) => {
+  const {
+    register,
+    // handleSubmit,
+    formState: { errors }
+  } = useForm();
   const navigate = useNavigate();
   const [searchValue, setSearchValue] = useState<string>("");
   const [filter, setFilter] = useState("");
@@ -95,6 +101,8 @@ const AgentTableHeader = ({
               { value: "new_request", name: "New Request" }
             ]}
             selectPlaceholder="Filter"
+            errors={errors}
+            register={register}
           />
 
           <div className="absolute inset-y-0 top-3 left-3">

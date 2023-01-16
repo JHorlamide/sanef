@@ -5,7 +5,7 @@ import moment from "moment";
 import { urlFor } from "lib/client";
 import { Spinner } from "flowbite-react";
 import { Tab } from "@headlessui/react";
-import { useData } from "hooks/useFetch";
+import { useCMSDataFetch } from "hooks/useFetch";
 import { NewsType, EventsType } from "types/news";
 import CustomCard from "components/widgets/Cards/Card";
 import { GET_NEWS_QUERIES, GET_EVENTS_QUERIES } from "utils/constants";
@@ -15,7 +15,7 @@ function classNames(...classes: any) {
 }
 
 const NewsTab = () => {
-  const { data } = useData<NewsType[]>(GET_NEWS_QUERIES);
+  const { data } = useCMSDataFetch<NewsType[]>(GET_NEWS_QUERIES);
 
   if (!data) {
     return (
@@ -47,7 +47,7 @@ const NewsTab = () => {
 };
 
 const GalleryTab = () => {
-  const { data } = useData<EventsType[]>(GET_EVENTS_QUERIES);
+  const { data } = useCMSDataFetch<EventsType[]>(GET_EVENTS_QUERIES);
   const navigate = useNavigate();
 
   const handleNavigate = (id: string) => {

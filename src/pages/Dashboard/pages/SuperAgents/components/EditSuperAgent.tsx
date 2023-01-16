@@ -14,6 +14,7 @@ import { uploadImage } from "api/upload";
 import { IUpdateSuperAgentRequest } from "types/superAgent";
 import useSuperAgent from "hooks/useSuperAgent";
 import { getSuperAgentDetails } from "api/superAgents";
+import { useForm } from "react-hook-form";
 
 interface UpdateSuperAgent extends CompanyDataType {
   serial: string;
@@ -185,6 +186,11 @@ const SubUpdateForm = ({
 };
 
 const EditSuperAgent = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm();
   const navigate = useNavigate();
   const { updateSuperAgentDetails } = useSuperAgent();
   const [companyData, setCompanyData] = useState<UpdateSuperAgent>({
@@ -314,10 +320,8 @@ const EditSuperAgent = () => {
     setErrorMessage("");
   };
 
-  const handleSubmit = async (
-    e: React.FormEvent<HTMLFormElement> | React.KeyboardEvent<HTMLButtonElement>
-  ) => {
-    e.preventDefault();
+  const onSubmit = async (data: any) => {
+    console.log(data);
     validateSelectedFileSize();
 
     const superAgentObj: IUpdateSuperAgentRequest = {
@@ -338,7 +342,7 @@ const EditSuperAgent = () => {
     e.preventDefault();
 
     if (e.key === "enter") {
-      handleSubmit(e);
+      onSubmit(e);
     }
   };
 
@@ -369,7 +373,7 @@ const EditSuperAgent = () => {
 
           <form
             className="container px-8 pb-8 mx-auto space-y-10"
-            onSubmit={handleSubmit}
+            onSubmit={handleSubmit(onSubmit)}
           >
             <div className="flex space-x-10">
               {/* Image Placeholder */}
@@ -500,6 +504,8 @@ const EditSuperAgent = () => {
                       { value: "Management", name: "Management" }
                     ]}
                     selectPlaceholder="Select a designation"
+                    register={register}
+                    errors={errors}
                   />
                 </div>
               </div>

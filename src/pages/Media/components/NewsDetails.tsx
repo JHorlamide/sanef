@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import Navbar from "components/layout/Navbar/Navbar";
 import Layout from "pages/Layout";
 import { LONG_HORIZONTAL_LINE } from "assets/icons";
-import { useData } from "hooks/useFetch";
+import { useCMSDataFetch } from "hooks/useFetch";
 import { NewsType } from "types/news";
 import moment from "moment";
 import { urlFor } from "lib/client";
@@ -16,7 +16,7 @@ import { MEDIA } from "routes/ROUTES_CONSTANTS";
 const NewsDetails = () => {
   const { id } = useParams();
   const queries = `*[_type == 'news' && _id == '${id}'][0]`;
-  const { data } = useData<NewsType>(queries);
+  const { data } = useCMSDataFetch<NewsType>(queries);
 
   if (!data) {
     return (

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { client } from "lib/client";
 
-export const useData = <T extends unknown>(fetchQuery: string) => {
+export const useCMSDataFetch = <T extends unknown>(fetchQuery: string) => {
   const [state, setState] = useState<T>();
 
   useEffect(() => {

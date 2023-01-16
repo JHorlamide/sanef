@@ -13,11 +13,14 @@ import { useSuperAgentForm } from "hooks/useSuperAgent";
 const AddSuperAgent = () => {
   const navigate = useNavigate();
   const {
+    register,
+    errors,
     companyData,
     companyLogo,
     errorMessage,
     previewLogo,
     hiddenFileInput,
+    onSubmit,
     handleSubmit,
     handleFileChange,
     handlePress,
@@ -38,7 +41,7 @@ const AddSuperAgent = () => {
 
           <form
             className="container px-8 mx-auto space-y-10"
-            onSubmit={handleSubmit}
+            onSubmit={handleSubmit(onSubmit)}
           >
             <div className="flex space-x-10">
               {/* Image Placeholder */}
@@ -155,6 +158,8 @@ const AddSuperAgent = () => {
                       { value: "Management", name: "Management" }
                     ]}
                     selectPlaceholder="Select a designation"
+                    errors={errors}
+                    register={register}
                   />
                 </div>
               </div>
