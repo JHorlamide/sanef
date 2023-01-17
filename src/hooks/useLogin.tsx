@@ -56,6 +56,7 @@ const useLogin = () => {
           return toast.error(error.response.data.message);
         }
 
+        setLoading(false);
         toast.error(error.message);
       });
   };
