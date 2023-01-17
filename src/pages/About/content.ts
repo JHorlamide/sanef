@@ -185,9 +185,9 @@ export const BOARD_CONTENT = {
       image: ADEOLU_ADEOSUN,
       name: "Adeolu Adeosun",
       position: "CHIEF FINANCIAL OFFICER",
-      shortBio: `Adeolu Adeosun is the Head, Finance and Corporate Services at Shared Agent Network Expansion...`,
-      shortBio2: `Adeolu Adeosun is the Head, Finance and Corporate Services at Shared Agent Network Expansion Facilities Limited (SANEF). He has over 14...`,
-      fullBio: `Adeolu Adeosun is the Head, Finance and Corporate Services at Shared Agent Network Expansion Facilities Limited (SANEF). He has over 14 years’ experience across several functions ranging from Auditing to Risk Management, Environmental & Social Risk Management, Budgetary Control and Financial Reporting. 
+      shortBio: `Adeolu Adeosun is the Chief Financial officer at Shared Agent Network Expansion...`,
+      shortBio2: `Adeolu Adeosun is the Chief Financial officer at Shared Agent Network Expansion Facilities Limited (SANEF). He has over 14...`,
+      fullBio: `Adeolu Adeosun is the Chief Financial officer at Shared Agent Network Expansion Facilities Limited (SANEF). He has over 14 years’ experience across several functions ranging from Auditing to Risk Management, Environmental & Social Risk Management, Budgetary Control and Financial Reporting. 
       \nHe is a Fellow of the Institute of Chartered Accountants of Nigeria (ICAN), and an Associate Member of the Chartered Institute of Taxation (CITN). He holds a diploma certificate in International Financial Reporting of Association of Chartered Certified Accountants (ACCA).`
     },
     {
