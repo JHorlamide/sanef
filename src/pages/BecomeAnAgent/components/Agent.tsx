@@ -386,7 +386,7 @@ const Agent = () => {
 
             {/* STATE & LGA */}
             <div className="container flex flex-col space-y-10 md:space-y-0 md:space-x-4 md:flex-row">
-              <div className="w-full space-y-2">
+              <div className="z-10 w-full space-y-2">
                 <label htmlFor="state">State</label>
                 <Combobox value={selectedState} onChange={setSelectedState}>
                   <div className="relative mt-1">
@@ -466,7 +466,7 @@ const Agent = () => {
                 </Combobox>
               </div>
 
-              <div className="w-full space-y-2">
+              <div className="z-10 w-full space-y-2">
                 <label htmlFor="lga">LGA</label>
                 <Combobox value={selectedLGA} onChange={setSelectedLGA}>
                   <div className="relative mt-1">
@@ -557,7 +557,7 @@ const Agent = () => {
                   required:
                     "Proposed agency services/business address is required"
                 }}
-                className="relative w-full py-3 border border-gray-300 rounded-full outline-buttonColor focus:border-buttonColor focus:ring-buttonColor"
+                className="relative z-0 w-full py-3 border border-gray-300 rounded-full outline-buttonColor focus:border-buttonColor focus:ring-buttonColor"
                 data-testid="emailInput"
                 parentClassName="space-y-2"
               />
