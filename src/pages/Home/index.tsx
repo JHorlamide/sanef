@@ -1,4 +1,3 @@
-import React from "react";
 import { DOTS, GROUP_SHAPE, LINE_1, LINE_2, GROUP_LINES } from "assets/icons";
 import { ROLE_IMAGE_DESKTOP, ROLE_IMAGE_MOBILE } from "assets/images";
 import { OUR_IMPACT_CARD_CONTENT } from "./content";
@@ -22,13 +21,13 @@ const Home = () => {
 
       {/* SHARED AGENT NETWORK  */}
       <section className="relative z-20 px-8 py-0">
-        <div className="relative flex flex-col justify-center items-center py-8">
-          <h1 className="text-center text-2xl font-bold md:text-3xl lg:text-4xl">
+        <div className="relative flex flex-col items-center justify-center py-8">
+          <h1 className="text-2xl font-bold text-center md:text-3xl lg:text-4xl">
             {/* Shared Agent Network Facilities Limited (SANEF) */}
             Shared Agent Network Expansion Facilities Limited (SANEF)
           </h1>
 
-          <hr className="border-b-4 border-buttonColor w-16 mt-2" />
+          <hr className="w-16 mt-2 border-b-4 border-buttonColor" />
 
           <p
             className="text-[18px] text-center my-5 md:my-8 md:max-w-4xl lg:my-6 
@@ -41,7 +40,7 @@ const Home = () => {
           </p>
 
           <RouterLink
-            className="text-buttonColor font-bold hover:text-lightGreen"
+            className="font-bold text-buttonColor hover:text-lightGreen"
             path={ABOUT_US}
             title="Learn More"
           />
@@ -56,15 +55,12 @@ const Home = () => {
       </section>
 
       {/* OUR IMPACT */}
-      <section className="flex flex-col justify-center items-center mt-16">
-        <h1 className="text-center text-2xl font-bold">Our Impact</h1>
-        <hr className="border-b-4 border-buttonColor w-16 mt-2" />
+      <section className="flex flex-col items-center justify-center mt-16">
+        <h1 className="text-2xl font-bold text-center">Our Impact</h1>
+        <hr className="w-16 mt-2 border-b-4 border-buttonColor" />
       </section>
 
-      <section
-        className="relative container mx-auto bg-white z-10 shadow-lg 
-        rounded-xl mt-16 py-10"
-      >
+      <section className="container relative z-10 py-10 mx-auto mt-16 bg-white shadow-lg rounded-xl">
         {/* MD & LG -> FLEX CONTAINER */}
         <div
           className="space-y-8 md:space-y-0 md:mt-10 md:mx-10 md:flex 
@@ -103,16 +99,12 @@ const Home = () => {
         </div>
 
         {/* TAB & DESKTOP HORIZONTAL ROLE */}
-        <Image
-          image={LINE_1}
-          parentClassName="hidden justify-center md:flex md:mt-10 md:mx-5 lg:flex lg:mt-10 lg:mx-auto"
-        />
+        <div className="flex items-center justify-center mt-10">
+          <img src={LINE_1} alt="horizontal-line" className="" />
+        </div>
 
         {/* Impact Footer ==> Desktop */}
-        <section
-          className="hidden md:grid md:grid-cols-2 md:gap-4 md:px-10 lg:mx-10 
-          lg:mt-6 lg:px-10 lg:grid lg:grid-cols-3 lg:gap-x-28"
-        >
+        <section className="hidden md:grid md:grid-cols-2 md:gap-4 md:px-10 lg:mx-10 lg:mt-6 lg:px-10 lg:grid lg:grid-cols-3 lg:gap-x-28">
           {OUR_IMPACT_CARD_CONTENT.FIRST_ITEM.map((cardContent) => (
             <OurImpactFooter
               key={cardContent.id}
@@ -135,7 +127,7 @@ const Home = () => {
       />
 
       {/* Impact Footer ==> Mobile */}
-      <section className="bg-white mt-10 py-20 md:hidden lg:hidden">
+      <section className="py-20 mt-10 bg-white md:hidden lg:hidden">
         {OUR_IMPACT_CARD_CONTENT.FIRST_ITEM.map((cardContent) => (
           <OurImpactFooter
             key={cardContent.id}
@@ -156,7 +148,7 @@ const Home = () => {
       />
 
       {/* OUR ROLE */}
-      <section className="bg-orange-50 w-screen flex flex-col py-10 md:w-full md:flex-row-reverse md:justify-between md:px-10 md:py-20 md:mt-16 lg:px-24 lg:pt-28 lg:mt-28">
+      <section className="flex flex-col w-screen py-10 bg-orange-50 md:w-full md:flex-row-reverse md:justify-between md:px-10 md:py-20 md:mt-16 lg:px-24 lg:pt-28 lg:mt-28">
         <Image
           image={GROUP_LINES}
           parentClassName="relative md:hidden lg:hidden"
@@ -182,33 +174,31 @@ const Home = () => {
             imageClassName="z-50 w-screen object-fill md:hidden lg:hidden"
           />
 
-          {/* <div className="flex justify-center items-center">
+          {/* <div className="flex items-center justify-center">
             <img
               src={ROLE_IMAGE_MOBILE}
               alt=""
-              className="z-50 w-screen object-fill md:hidden lg:hidden"
+              className="z-50 object-fill w-screen md:hidden lg:hidden"
             />
           </div> */}
         </div>
 
-        <div className="mt-10 flex flex-col justify-center items-center md:space-y-8 md:m-0 md:ml-0 md:justify-start md:items-start">
-          <section className="flex flex-col justify-center items-center md:justify-start md:items-start">
-            <h1 className="text-center text-2xl font-bold md:text-left lg:text-3xl">
+        <div className="flex flex-col items-center justify-center mt-10 md:space-y-8 md:m-0 md:ml-0 md:justify-start md:items-start">
+          <section className="flex flex-col items-center justify-center md:justify-start md:items-start">
+            <h1 className="text-2xl font-bold text-center md:text-left lg:text-3xl">
               Our Role In Enabling Financial Inclusion
             </h1>
-            <hr className="border-b-4 border-buttonColor w-16 mt-2" />
+            <hr className="w-16 mt-2 border-b-4 border-buttonColor" />
           </section>
 
-          <p className="text-md text-center mt-5 px-10 md:text-sm md:text-left md:px-0 lg:text-lg lg:max-w-xl">
+          <p className="px-10 mt-5 text-center text-md md:text-sm md:text-left md:px-0 lg:text-lg lg:max-w-xl">
             SANEF collaborates with partners to ensure Agents are present in all
             the 774 Local Government Areas to provide Financial Services to{" "}
             Nigerians by deepening Financial Inclusion.
           </p>
 
           <RouterLink
-            className="text-white font-bold border-2 bg-buttonColor border-buttonColor 
-            rounded-full px-6 py-3 mt-4 md:px-8 lg:px-16 hover:bg-lightGreen
-            hover:border-lightGreen"
+            className="px-6 py-3 mt-4 font-bold text-white border-2 rounded-full bg-buttonColor border-buttonColor md:px-8 lg:px-16 hover:bg-lightGreen hover:border-lightGreen"
             path={"/about-us"}
             title="Learn More"
           />
@@ -216,10 +206,10 @@ const Home = () => {
       </section>
 
       {/* RECENT NEWS */}
-      <section className="bg-white flex flex-col justify-center items-center pt-14">
-        <section className="flex flex-col justify-center items-center">
-          <h1 className="text-center text-2xl font-bold">Recent News</h1>
-          <hr className="border-b-4 border-buttonColor w-16 mt-2" />
+      <section className="flex flex-col items-center justify-center bg-white pt-14">
+        <section className="flex flex-col items-center justify-center">
+          <h1 className="text-2xl font-bold text-center">Recent News</h1>
+          <hr className="w-16 mt-2 border-b-4 border-buttonColor" />
         </section>
 
         {/* MOBILE TAB */}
