@@ -31,7 +31,7 @@ interface useSuperAgentFormProps {
 
 const useSuperAgent = (
   pageNumber: number = 0,
-  superAgentPerPage: number = 20
+  superAgentPerPage: number = 10
 ) => {
   const navigate = useNavigate();
   const [superAgents, setSuperAgents] = useState<ISuperAgent[]>([]);

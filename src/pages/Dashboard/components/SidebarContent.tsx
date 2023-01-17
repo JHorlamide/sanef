@@ -116,7 +116,7 @@ const SidebarContent = () => {
   };
 
   return (
-    <div className="container flex flex-col mx-auto">
+    <div className="container flex flex-col h-screen mx-auto">
       <div className="mx-5 w-[101px] h-[96px] my-2">
         <img src={LOGIN_LOGO} alt="..." className="w-full h-full" />
       </div>
