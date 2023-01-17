@@ -14,6 +14,7 @@ import { Combobox, Transition } from "@headlessui/react";
 import { BsCheck2 } from "react-icons/bs";
 import { HiOutlineChevronDown } from "react-icons/hi";
 import { StateType } from "hooks/useStateLga";
+import { useFetchSuperAgents } from "hooks/useFetch";
 
 const AddAgents = () => {
   const DEFAULT_STATE_TO_FETCH_LGA = "lagos";
@@ -27,6 +28,7 @@ const AddAgents = () => {
   const [query, setQuery] = useState("");
   const [selectedState, setSelectedState] = useState<StateType>(statesList[0]);
   const [selectedLGA, setSelectedLGA] = useState(LGAsList && LGAsList[0]);
+  const { superAgents } = useFetchSuperAgents();
   const {
     agentData,
     handleSubmit,
@@ -396,15 +398,21 @@ const AddAgents = () => {
                 <label htmlFor="choiceOfSuperAgent">
                   Choice of Super Agent
                 </label>
-                <CustomInput
+                <CustomSelect
                   id="choiceOfSuperAgent"
-                  className="w-full py-3 mt-8 border-gray-300 rounded-full outline-buttonColor focus:border-buttonColor focus:ring-buttonColor"
-                  inputProps={{
-                    type: "text",
-                    name: "choiceOfSuperAgent",
-                    value: agentData.choiceOfSuperAgent,
-                    onChange: handleCompanyDataChange
+                  className="w-full py-3 border border-gray-300 rounded-full outline-buttonColor focus:border-buttonColor focus:ring-buttonColor"
+                  selectProps={{
+                    name: "choiceOfSuperAgent"
                   }}
+                  selectOptions={superAgents.map((superAgent) => {
+                    return {
+                      value: superAgent.companyName,
+                      name: superAgent!.companyName
+                    };
+                  })}
+                  selectPlaceholder="Business Name"
+                  errors={errors}
+                  register={register}
                 />
               </div>
 

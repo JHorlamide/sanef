@@ -13,7 +13,7 @@ import { IRegulatorRequest } from "types/regulator";
 
 const useRegulator = (
   pageNumber: number = 0,
-  regulatorsPerPage: number = 20
+  regulatorsPerPage: number = 10
 ) => {
   const navigate = useNavigate();
   const [regulators, setRegulators] = useState<IRegulator[]>([]);

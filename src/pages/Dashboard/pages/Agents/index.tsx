@@ -50,6 +50,7 @@ const Agent = () => {
 
         <div className="flex justify-between mt-8">
           <TableRecord
+            totalPage={totalPages}
             recordPerPage={agentPerPage}
             setRecordPerPate={setAgentPerPage}
           />

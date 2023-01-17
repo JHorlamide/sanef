@@ -10,7 +10,7 @@ import Pagination, { TableRecord } from "pages/Dashboard/components/Pagination";
 
 const Government = () => {
   const [pageNumber, setPageNumber] = useState(0);
-  const [govPerPage, setGovPerPage] = useState(20);
+  const [govPerPage, setGovPerPage] = useState(10);
   const {
     loading,
     error,
@@ -41,6 +41,7 @@ const Government = () => {
 
         <div className="flex justify-between mt-8">
           <TableRecord
+            totalPage={totalPages}
             recordPerPage={govPerPage}
             setRecordPerPate={setGovPerPage}
           />

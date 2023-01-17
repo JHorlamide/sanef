@@ -41,6 +41,7 @@ const Regulators = () => {
 
         <div className="flex justify-between mt-8">
           <TableRecord
+            totalPage={totalPages}
             recordPerPage={regulatorPerPage}
             setRecordPerPate={setRegulatorPerPage}
           />

@@ -4,13 +4,6 @@ import { IoIosArrowDown } from "react-icons/io";
 import { Menu, Transition } from "@headlessui/react";
 import { Pagination } from "flowbite-react";
 
-// import {
-//   IoIosArrowForward,
-//   IoIosArrowBack
-//   // IoIosArrowDown
-// } from "react-icons/io";
-// import Test from "./Test";
-
 export interface IPaginationProps {
   pageNumber: number;
   totalPage: number;
@@ -18,11 +11,13 @@ export interface IPaginationProps {
 }
 
 export interface TableRecordProps {
+  totalPage: number;
   recordPerPage: number;
   setRecordPerPate: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export const TableRecord = ({
+  totalPage,
   recordPerPage,
   setRecordPerPate
 }: TableRecordProps) => {
@@ -78,7 +73,7 @@ export const TableRecord = ({
             </Transition>
           </Menu>
         </div>
-        of 320 Records
+        of {totalPage} Records
       </p>
     </div>
   );
@@ -102,66 +97,5 @@ const PaginationItem = ({
     />
   );
 };
-
-// const Pagination = () => {
-//   return (
-//     <div className="flex justify-center">
-//       <nav aria-label="Page navigation example">
-//         <ul className="flex list-style-none">
-//           <li className="page-item">
-//             <a
-//               className="page-link relative block py-1.5 px-3  border-0 bg-transparent outline-none transition-all duration-300 rounded text-gray-800 hover:text-gray-800 focus:shadow-none"
-//               href="/"
-//               aria-label="Previous"
-//             >
-//               <IoIosArrowBack size={22} className="ml-1 mt-0.5 text-sm" />
-//             </a>
-//           </li>
-//           <li className="page-item">
-//             <a
-//               className="page-link relative block py-1.5 px-3 border-0 bg-transparent
-//               outline-none transition-all duration-300 rounded text-buttonColor
-//               hover:text-gray-800 hover:bg-gray-200 focus:shadow-none"
-//               href="/"
-//             >
-//               1
-//             </a>
-//           </li>
-//           <li className="page-item">
-//             <a
-//               className="page-link relative block py-1.5 px-3 border-0 bg-transparent outline-none
-//               transition-all duration-300 rounded text-gray-800 hover:text-gray-800
-//               hover:bg-gray-200 focus:shadow-none"
-//               href="/"
-//             >
-//               2
-//             </a>
-//           </li>
-//           <li className="page-item">
-//             <a
-//               className="page-link relative block py-1.5 px-3 border-0 bg-transparent outline-none
-//               transition-all duration-300 rounded text-gray-800 hover:text-gray-800 focus:shadow-none
-//               hover:bg-gray-200"
-//               href="/"
-//             >
-//               3
-//             </a>
-//           </li>
-//           <li className="page-item">
-//             <a
-//               className="page-link relative block py-1.5 px-3 border-0 bg-transparent outline-none
-//               transition-all duration-300 rounded text-gray-800 hover:text-gray-800 focus:shadow-none
-//               hover:bg-gray-200"
-//               href="/"
-//               aria-label="Next"
-//             >
-//               <IoIosArrowForward size={22} className="ml-1 mt-0.5 text-sm" />
-//             </a>
-//           </li>
-//         </ul>
-//       </nav>
-//     </div>
-//   );
-// };
 
 export default PaginationItem;

@@ -244,7 +244,6 @@ export const useSuperAgentForm = ({
   };
 
   const onSubmit = async (data: any) => {
-    console.log(data);
     validateSelectedFileSize();
 
     const superAgentObj: ISuperAgentRequest = {
@@ -253,7 +252,7 @@ export const useSuperAgentForm = ({
       createdDate: new Date(),
       companyName: companyData.companyName,
       contactPerson: companyData.companyContactPerson,
-      designation: companyData.designation,
+      designation: data.designation,
       companyAddress: companyData.companyAddress,
       phoneNumber: `+234${companyData.phoneNumber}`
     };

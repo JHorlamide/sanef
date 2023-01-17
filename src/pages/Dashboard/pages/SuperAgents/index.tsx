@@ -12,7 +12,7 @@ import useSuperAgent from "hooks/useSuperAgent";
 
 const SuperAgent = () => {
   const [pageNumber, setPageNumber] = useState(0);
-  const [superAgentPerPage, setSuperAgentPerPage] = useState(20);
+  const [superAgentPerPage, setSuperAgentPerPage] = useState(10);
   const {
     loading,
     error,
@@ -47,6 +47,7 @@ const SuperAgent = () => {
 
         <div className="flex justify-between mt-8">
           <TableRecord
+            totalPage={totalPages}
             recordPerPage={superAgentPerPage}
             setRecordPerPate={setSuperAgentPerPage}
           />

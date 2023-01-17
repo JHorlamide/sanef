@@ -47,59 +47,6 @@ const Agent = () => {
     superAgents
   } = useRegisterAgent();
 
-  // const navigate = useNavigate();
-  // const DEFAULT_STATE_TO_FETCH_LGA = "lagos";
-  // const [stateToFetchLGA, setStateToFetchLGA] = useState<string>("");
-
-  // const { statesList, LGAsList } = useStateLga(
-  //   stateToFetchLGA ? stateToFetchLGA : DEFAULT_STATE_TO_FETCH_LGA
-  // );
-
-  // const [query, setQuery] = useState("");
-  // const [selectedState, setSelectedState] = useState<StateType>(statesList[0]);
-  // const [selectedLGA, setSelectedLGA] = useState(LGAsList && LGAsList[0]);
-  // const regex = new RegExp(`${query}`, "gi");
-
-  // const filterState =
-  //   query === ""
-  //     ? statesList
-  //     : statesList.filter((state) => state.name.match(regex));
-
-  // const filterLGA =
-  //   query === "" ? LGAsList : LGAsList?.filter((lga) => lga.match(regex));
-
-  // const onSubmit = (data: any) => {
-  //   console.log("Form Data: ", { selectedLGA, selectedState, ...data });
-  //   const agentObj: IAgentRequest = {
-  //     email: data.email,
-  //     firstName: data.firstName,
-  //     surname: data.lastName,
-  //     businessName: data.businessName,
-  //     state: stateToFetchLGA,
-  //     LGA: selectedLGA as string,
-  //     approved: false,
-  //     createdDate: new Date(),
-  //     gender: data.gender,
-  //     choiceOfSuperAgent: data.superAgent,
-  //     preferredPhoneNumber: data.preferredPhoneNumber,
-  //     alternativePhoneNumber: data.alternatePhoneNumber,
-  //     proposedAgentService: data.proposedAgencyService
-  //   };
-
-  //   registerNewAgentByUser(agentObj)
-  //     .then((response) => {
-  //       toast.success(response.message);
-  //       navigate("/become-agent");
-  //     })
-  //     .catch((error) => {
-  //       if (error.response) {
-  //         return toast.error(error.response.data.message);
-  //       }
-
-  //       toast.error(error.message);
-  //     });
-  // };
-
   return (
     <Fragment>
       <div className="sm:container space-y-5 md:w-[690px] md:justify-center px-5 mx-auto">

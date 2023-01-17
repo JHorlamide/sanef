@@ -287,8 +287,8 @@ export const useAgentForm = (state: string, LGA: string | undefined) => {
       LGA: LGA as string,
       approved: true,
       createdDate: new Date(),
-      gender: agentData.gender,
-      choiceOfSuperAgent: agentData.choiceOfSuperAgent,
+      gender: data.gender,
+      choiceOfSuperAgent: data.choiceOfSuperAgent,
       preferredPhoneNumber: `+234${agentData.preferredPhoneNumber}`,
       alternativePhoneNumber: `+234${agentData.alternativePhoneNumber}`,
       proposedAgentService: agentData.proposedAgentService
@@ -519,4 +519,5 @@ export const useRegisterAgent = () => {
     setSelectedLGA
   };
 };
+
 export default useAgents;

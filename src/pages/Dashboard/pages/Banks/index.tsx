@@ -25,7 +25,7 @@ const BankManager = () => {
     <DashboardLayout>
       <BankHeader />
 
-      <DashboardMainView className="h-auto">
+      <DashboardMainView className="h-screen">
         <BankTableHeader
           buttonText={"New Bank"}
           path={ADD_BANK}
@@ -42,6 +42,7 @@ const BankManager = () => {
 
         <div className="flex justify-between py-5">
           <TableRecord
+            totalPage={totalPages}
             recordPerPage={bankPerPage}
             setRecordPerPate={setBankPerPage}
           />

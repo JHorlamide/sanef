@@ -41,6 +41,7 @@ const StrategicPartner = () => {
 
         <div className="flex justify-between mt-8">
           <TableRecord
+            totalPage={totalPages}
             recordPerPage={partnerPerPage}
             setRecordPerPate={setPartnerPerPage}
           />

@@ -13,7 +13,7 @@ import { IRequest } from "types/strategicPartner";
 
 const useStrategicPartner = (
   pageNumber: number = 0,
-  partnerPerPage: number = 20
+  partnerPerPage: number = 10
 ) => {
   const navigate = useNavigate();
   const [partners, setPartners] = useState<IStrategicPartner[]>([]);
