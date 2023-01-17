@@ -48,6 +48,7 @@ const useLogin = () => {
         localStorage.setItem("refreshToken", response.data.refreshToken);
       })
       .catch((error: any) => {
+        setLoading(false);
         if (error.status === "FETCH_ERROR") {
           return toast.error("Server error: Server seems to be down");
         }
@@ -56,7 +57,6 @@ const useLogin = () => {
           return toast.error(error.response.data.message);
         }
 
-        setLoading(false);
         toast.error(error.message);
       });
   };
