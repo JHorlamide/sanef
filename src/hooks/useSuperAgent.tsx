@@ -20,7 +20,6 @@ export type CompanyDataType = {
   companyName: string;
   companyAddress: string;
   companyContactPerson: string;
-  designation: string;
   phoneNumber: string;
 };
 
@@ -157,7 +156,6 @@ export const useSuperAgentForm = ({
     companyName: "",
     companyAddress: "",
     companyContactPerson: "",
-    designation: "",
     email: "",
     phoneNumber: ""
   });
@@ -252,7 +250,6 @@ export const useSuperAgentForm = ({
       createdDate: new Date(),
       companyName: companyData.companyName,
       contactPerson: companyData.companyContactPerson,
-      designation: data.designation,
       companyAddress: companyData.companyAddress,
       phoneNumber: `+234${companyData.phoneNumber}`
     };

@@ -7,14 +7,14 @@ import { DashboardMainView } from "pages/Dashboard/components/Layout";
 import CustomBtn from "components/widgets/CustomBtn/CustomBtn";
 import CustomInput from "components/widgets/CustomInput/CustomInput";
 import { SUPER_AGENT } from "routes/ROUTES_CONSTANTS";
-import CustomSelect from "components/widgets/CustomInput/CustomSelect";
+// import CustomSelect from "components/widgets/CustomInput/CustomSelect";
 import { CompanyDataType } from "hooks/useSuperAgent";
 import toast from "react-hot-toast";
 import { uploadImage } from "api/upload";
 import { IUpdateSuperAgentRequest } from "types/superAgent";
 import useSuperAgent from "hooks/useSuperAgent";
 import { getSuperAgentDetails } from "api/superAgents";
-import { useForm } from "react-hook-form";
+// import { useForm } from "react-hook-form";
 
 interface UpdateSuperAgent extends CompanyDataType {
   serial: string;
@@ -186,18 +186,12 @@ const SubUpdateForm = ({
 };
 
 const EditSuperAgent = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors }
-  } = useForm();
   const navigate = useNavigate();
   const { updateSuperAgentDetails } = useSuperAgent();
   const [companyData, setCompanyData] = useState<UpdateSuperAgent>({
     companyName: "",
     companyAddress: "",
     companyContactPerson: "",
-    designation: "",
     email: "",
     phoneNumber: "",
 
@@ -229,7 +223,6 @@ const EditSuperAgent = () => {
           companyContactPerson: response.data.contactPerson,
           email: response.data.email,
           companyName: response.data.companyName,
-          designation: response.data.designation,
           phoneNumber: response.data.phoneNumber?.slice(4)
         });
       })
@@ -320,8 +313,8 @@ const EditSuperAgent = () => {
     setErrorMessage("");
   };
 
-  const onSubmit = async (data: any) => {
-    console.log(data);
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     validateSelectedFileSize();
 
     const superAgentObj: IUpdateSuperAgentRequest = {
@@ -329,21 +322,12 @@ const EditSuperAgent = () => {
       logo: imageUploadId,
       email: companyData.email,
       companyName: companyData.companyName,
-      designation: companyData.designation,
       phoneNumber: `+234${companyData.phoneNumber}`,
       companyAddress: companyData.companyAddress,
       contactPerson: companyData.companyContactPerson
     };
 
     updateSuperAgentDetails(superAgentObj);
-  };
-
-  const handlePress = (e: React.KeyboardEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-
-    if (e.key === "enter") {
-      onSubmit(e);
-    }
   };
 
   return (
@@ -373,7 +357,7 @@ const EditSuperAgent = () => {
 
           <form
             className="container px-8 pb-8 mx-auto space-y-10"
-            onSubmit={handleSubmit(onSubmit)}
+            onSubmit={onSubmit}
           >
             <div className="flex space-x-10">
               {/* Image Placeholder */}
@@ -487,7 +471,7 @@ const EditSuperAgent = () => {
                   />
                 </div>
 
-                <div className="space-y-3 w-52">
+                {/* <div className="space-y-3 w-52">
                   <label htmlFor="designation">Designation</label>
                   <CustomSelect
                     id="designation"
@@ -507,7 +491,7 @@ const EditSuperAgent = () => {
                     register={register}
                     errors={errors}
                   />
-                </div>
+                </div> */}
               </div>
 
               {/* Email Address */}
@@ -562,7 +546,6 @@ const EditSuperAgent = () => {
               <CustomBtn
                 className="px-20 py-3 font-semibold text-white rounded-full bg-buttonColor hover:bg-lightGreen"
                 type="submit"
-                onKeyDown={handlePress}
               >
                 Update Changes
               </CustomBtn>

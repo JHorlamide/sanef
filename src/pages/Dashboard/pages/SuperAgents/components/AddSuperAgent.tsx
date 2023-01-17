@@ -7,14 +7,12 @@ import { DashboardMainView } from "pages/Dashboard/components/Layout";
 import CustomBtn from "components/widgets/CustomBtn/CustomBtn";
 import CustomInput from "components/widgets/CustomInput/CustomInput";
 import { SUPER_AGENT } from "routes/ROUTES_CONSTANTS";
-import CustomSelect from "components/widgets/CustomInput/CustomSelect";
+// import CustomSelect from "components/widgets/CustomInput/CustomSelect";
 import { useSuperAgentForm } from "hooks/useSuperAgent";
 
 const AddSuperAgent = () => {
   const navigate = useNavigate();
   const {
-    register,
-    errors,
     companyData,
     companyLogo,
     errorMessage,
@@ -141,7 +139,7 @@ const AddSuperAgent = () => {
                   />
                 </div>
 
-                <div className="space-y-3 w-52">
+                {/* <div className="space-y-3 w-52">
                   <label htmlFor="designation">Designation</label>
                   <CustomSelect
                     id="designation"
@@ -161,7 +159,7 @@ const AddSuperAgent = () => {
                     errors={errors}
                     register={register}
                   />
-                </div>
+                </div> */}
               </div>
 
               {/* <div className="flex space-x-3"> */}

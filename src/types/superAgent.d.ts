@@ -19,7 +19,6 @@ export interface ISuperAgentRequest {
   companyAddress: string;
   phoneNumber: string;
   contactPerson: string;
-  designation: string;
 }
 
 export interface IUpdateSuperAgentRequest {
@@ -30,5 +29,4 @@ export interface IUpdateSuperAgentRequest {
   logo: any;
   phoneNumber: string;
   contactPerson: string;
-  designation: string;
 }
