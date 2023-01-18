@@ -69,8 +69,8 @@ const GalleryTab = () => {
 
   return (
     <Fragment>
-      <div className="container mx-auto pb-10 px-5">
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+      <div className="container px-5 pb-10 mx-auto">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-3 lg:grid-cols-4">
           {data.map((gallery) => (
             <div
               key={gallery._id}
@@ -86,7 +86,7 @@ const GalleryTab = () => {
 
               <div className="absolute space-y-3 bottom-8 left-10">
                 <p className="text-[12px]">
-                  {moment(gallery.date).format("LLL")}
+                  {moment(gallery.date).format("MM/DD/YYYY")}
                 </p>
                 <h1 className={`text-[28px] font-bold`}>{gallery.eventName}</h1>
               </div>
@@ -100,9 +100,9 @@ const GalleryTab = () => {
 
 const MediaTab = () => {
   return (
-    <div className="container-md mx-auto relative mt-16 md:-mt-16">
+    <div className="relative mx-auto mt-16 container-md md:-mt-16">
       <Tab.Group>
-        <Tab.List className="flex justify-center items-center space-x-20 border-b-0">
+        <Tab.List className="flex items-center justify-center space-x-20 border-b-0">
           <div className="flex space-x-14">
             <Tab
               className={({ selected }) =>
