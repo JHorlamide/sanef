@@ -28,7 +28,7 @@ const Agent = () => {
     <DashboardLayout>
       <AgentsHeader />
 
-      <DashboardMainView className="h-screen">
+      <DashboardMainView className="py-20">
         <Analytics totalAgents={totalAgents} />
 
         <img src={LONG_HORIZONTAL_LINE} alt="" className="w-full" />
