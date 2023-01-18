@@ -73,7 +73,7 @@ const StrategicPartnerTable = ({
 
         <Table.Body className="divide-y">
           {loading && (
-            <div className="container flex items-center justify-center my-8 ml-[280px]">
+            <div className="container flex items-center justify-center my-8 ml-[200px]">
               <Spinner
                 color="success"
                 aria-label="spinner"
