@@ -204,7 +204,7 @@ export const useGovernmentForm = () => {
 
       toast.error(response.message);
     } catch (error: any) {
-      console.log(error.response.data.message);
+      console.log(error.response);
       toast.error(error.response.data.message);
     }
   };

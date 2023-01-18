@@ -12,6 +12,7 @@ import RecentNews from "components/common/RecentNews";
 import { Spinner } from "flowbite-react";
 import RouterLink from "components/layout/Navbar/NavLink/RouterLink";
 import { MEDIA } from "routes/ROUTES_CONSTANTS";
+import { IoIosArrowBack } from "react-icons/io";
 
 const NewsDetails = () => {
   const { id } = useParams();
@@ -59,13 +60,15 @@ const NewsDetails = () => {
         <div className="col-span-12 lg:col-span-12">
           {/* Article Published Date */}
           <div className="flex py-6 space-x-12">
-            <p className="text-[12px] ">{moment(data?.date).format("LLL")}</p>
-
             <RouterLink
               path={MEDIA}
               title="Back"
-              className="-my-1 font-semibold text-buttonColor"
+              className="flex -my-1 font-semibold text-buttonColor"
+              leftIcon={
+                <IoIosArrowBack size={22} className="ml-1 mt-0.5 text-sm" />
+              }
             />
+            <p className="text-[12px] ">{moment(data?.date).format("LLL")}</p>
           </div>
 
           {/* Article Headline */}

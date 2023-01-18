@@ -20,6 +20,7 @@ const BankManager = () => {
     setSearchTerm
   } = useBank(pageNumber, bankPerPage);
 
+  // const pageCount = Math.ceil(totalPages / bankPerPage);
   return (
     <DashboardLayout>
       <BankHeader />

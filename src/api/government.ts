@@ -10,12 +10,12 @@ export const getAllGovernments = async (
     `/governments?pageNumber=${pageNumber}&govPerPage=${govPerPage}`,
     options
   );
-  return data.data;
+  return data;
 };
 
 export const registerGovernment = async (governmentObj: IGovernmentRequest) => {
   const { data } = await axiosPrivate.post("/governments", governmentObj);
-  return data;
+  return data.data;
 };
 
 export const getGovernmentDetails = async (
