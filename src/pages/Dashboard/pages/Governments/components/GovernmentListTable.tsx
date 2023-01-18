@@ -73,7 +73,7 @@ const GovernmentListTable = ({
 
         <Table.Body className="divide-y">
           {loading && (
-            <div className="container flex items-center justify-center my-8 ml-[200px]">
+            <div className="container flex items-center justify-center my-8 ml-[150px]">
               <Spinner
                 color="success"
                 aria-label="spinner"
