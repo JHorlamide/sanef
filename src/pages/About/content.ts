@@ -183,12 +183,14 @@ export const BOARD_CONTENT = {
     {
       id: 3,
       image: ADEOLU_ADEOSUN,
-      name: "Adeolu Adeosun",
+      name: "Adeolu Adeosun - BSC, MBA, ACA, ACIT DIP IFRS ACMA, CGMA",
       position: "CHIEF FINANCIAL OFFICER",
-      shortBio: `Adeolu Adeosun is the Chief Financial officer at Shared Agent Network Expansion...`,
-      shortBio2: `Adeolu Adeosun is the Chief Financial officer at Shared Agent Network Expansion Facilities Limited (SANEF). He has over 14...`,
-      fullBio: `Adeolu Adeosun is the Chief Financial officer at Shared Agent Network Expansion Facilities Limited (SANEF). He has over 14 years’ experience across several functions ranging from Auditing to Risk Management, Environmental & Social Risk Management, Budgetary Control and Financial Reporting. 
-      \nHe is a Fellow of the Institute of Chartered Accountants of Nigeria (ICAN), and an Associate Member of the Chartered Institute of Taxation (CITN). He holds a diploma certificate in International Financial Reporting of Association of Chartered Certified Accountants (ACCA).`
+      shortBio: `Adeolu is the Chief Financial Officer and head of Corporate Services at Shared Agent Network Expansion...`,
+      shortBio2: `Adeolu is the Chief Financial Officer and head of Corporate Services at Shared Agent Network Expansion Facilities Limited (SANEF). He has over 17...`,
+      fullBio: `Adeolu is the Chief Financial Officer and head of Corporate Services at Shared Agent Network Expansion Facilities Limited (SANEF).   
+      \nHe has over 17 years’ Cognate experience across several functions ranging from Auditing to Risk Management, Environmental & Social Risk Management, Budgetary Control and Financial Reporting. 
+      \nAdeolu is a graduate of University of Ibadan where he bagged a bachelor’s degree in Food Technology and an MBA degree from Obafemi Awolowo University. He is also a fellow of the Institute of Chartered Accountant of Nigeria (ICAN), Associate member of the Chartered Institute of Taxation of Nigeria (CITN), Associate member of the Chartered Institute of Management Accountant (CIMA-UK) and Chartered Global Management Accountant (CGMA).  
+      \nHe also holds a diploma certificate in International Financial Reporting of Association of Chartered Certified Accountants (ACCA) UK `
     },
     {
       id: 4,
