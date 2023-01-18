@@ -20,12 +20,11 @@ const BankManager = () => {
     setSearchTerm
   } = useBank(pageNumber, bankPerPage);
 
-  // const pageCount = Math.ceil(totalPages / bankPerPage);
   return (
     <DashboardLayout>
       <BankHeader />
 
-      <DashboardMainView className="h-screen">
+      <DashboardMainView className="">
         <BankTableHeader
           buttonText={"New Bank"}
           path={ADD_BANK}
