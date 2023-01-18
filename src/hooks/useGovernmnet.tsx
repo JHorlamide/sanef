@@ -192,15 +192,21 @@ export const useGovernmentForm = () => {
       logo: imageUploadId
     };
 
-    const response = await registerGovernment(governmentObj);
+    try {
+      const response = await registerGovernment(governmentObj);
+      console.log("I was clicked");
 
-    if (response.status === "Success") {
-      toast.success(response.message);
-      navigate("/governments");
-      return;
+      if (response.status === "Success") {
+        toast.success(response.message);
+        navigate("/governments");
+        return;
+      }
+
+      toast.error(response.message);
+    } catch (error: any) {
+      console.log(error.response.data.message);
+      toast.error(error.response.data.message);
     }
-
-    toast.error(response.message);
   };
 
   const handlePress = (e: React.KeyboardEvent<HTMLButtonElement>) => {
