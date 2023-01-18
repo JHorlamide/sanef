@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 
-import { LOGIN_LOGO } from "assets/images";
+import { Logo } from "assets/images";
 import { USER } from "assets/icons";
 import CustomBtn from "components/widgets/CustomBtn/CustomBtn";
 import AuthContext from "context/AuthProvider";
@@ -90,17 +90,6 @@ const SidebarUserAuth = ({ name, logOut }: SidebarUserAuthProps) => {
   );
 };
 
-// const SidebarFooter = () => {
-//   return (
-//     <div className="absolute bottom-0 flex items-center justify-center left-10">
-//       <p className="text-gray-400 text-[12px] text-justify">
-//         © 2022. Shared Agent Network Expansion Facilities. <br /> All right
-//         reserved
-//       </p>
-//     </div>
-//   );
-// };
-
 const SidebarContent = () => {
   const navigate = useNavigate();
 
@@ -117,8 +106,8 @@ const SidebarContent = () => {
 
   return (
     <div className="container flex flex-col h-screen mx-auto">
-      <div className="mx-5 w-[101px] h-[96px] my-2">
-        <img src={LOGIN_LOGO} alt="..." className="w-full h-full" />
+      <div className="mx-5 w-[96px] h-auto my-[18px]">
+        <img src={Logo} alt="..." className="w-full h-full" />
       </div>
 
       {/* <HorizontalRule /> */}
