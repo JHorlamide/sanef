@@ -41,7 +41,7 @@ const NewsDetails = () => {
       {/* MOBILE DISPLAY */}
       <div className="md:hidden w-full h-[270px]">
         <img
-          src={urlFor(data.image).toString()}
+          src={urlFor(data?.image).toString()}
           alt="..."
           className="object-cover w-full h-full bg-no-repeat"
         />
@@ -50,7 +50,7 @@ const NewsDetails = () => {
       {/* DESKTOP DISPLAY */}
       <div className="hidden md:block w-full h-[600px] bg-center  bg-auto">
         <img
-          src={urlFor(data.image).toString()}
+          src={urlFor(data?.image).toString()}
           alt="..."
           className="object-cover w-full h-full"
         />

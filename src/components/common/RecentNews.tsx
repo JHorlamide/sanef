@@ -29,8 +29,8 @@ const RecentNews = () => {
         <RecentCard
           id={post._id}
           key={post._id}
-          date={moment(post.date).format("LLL")}
-          image={urlFor(post.image)}
+          date={moment(post?.date).format("LLL")}
+          image={urlFor(post?.image)}
           headLine={post.headLine}
           details={post.details}
           imgWidthHeight={"w-full h-72"}

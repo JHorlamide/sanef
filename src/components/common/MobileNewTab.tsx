@@ -27,7 +27,7 @@ export default function MobileNewTab() {
   }
 
   return (
-    <div className="md:hidden w-full max-w-md px-2 sm:px-0 mb-10">
+    <div className="w-full max-w-md px-2 mb-10 md:hidden sm:px-0">
       <Tab.Group>
         <Tab.Panels className="mt-2">
           {data.map((post) => (
@@ -41,8 +41,8 @@ export default function MobileNewTab() {
               <CustomCard
                 key={post._id}
                 id={post._id}
-                date={moment(post.date).format("LLL")}
-                image={urlFor(post.image).toString()}
+                date={moment(post?.date).format("LLL")}
+                image={urlFor(post?.image ?? post?.image).toString()}
                 headLine={post.headLine}
                 details={post.details}
               />
@@ -50,7 +50,7 @@ export default function MobileNewTab() {
           ))}
         </Tab.Panels>
 
-        <Tab.List className="flex space-x-6 justify-center rounded-xl">
+        <Tab.List className="flex justify-center space-x-6 rounded-xl">
           {data.map((category) => (
             <Tab
               key={category._id}

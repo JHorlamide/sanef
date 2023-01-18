@@ -36,8 +36,8 @@ const NewsTab = () => {
         <CustomCard
           key={post._id}
           id={post._id}
-          date={moment(post.date).format("LLL")}
-          image={urlFor(post.image)}
+          date={moment(post?.date).format("LLL")}
+          image={urlFor(post?.image)}
           headLine={post.headLine}
           details={post.details}
         />
@@ -79,7 +79,7 @@ const GalleryTab = () => {
               onClick={() => handleNavigate(gallery._id)}
             >
               <img
-                src={urlFor(gallery.image[0]).toString()}
+                src={urlFor(gallery?.image[0]).toString()}
                 alt="..."
                 className="absolute object-cover w-full h-full mix-blend-overlay rounded-xl"
               />
