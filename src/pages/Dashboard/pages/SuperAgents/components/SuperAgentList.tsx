@@ -75,7 +75,7 @@ const SuperAgentList = ({
               className="ml-2"
             />
           </Table.HeadCell>
-          <Table.HeadCell className="font-light">
+          {/* <Table.HeadCell className="font-light">
             Designation
             <CustomBtn
               rightIcon={
@@ -83,7 +83,7 @@ const SuperAgentList = ({
               }
               className="ml-2"
             />
-          </Table.HeadCell>
+          </Table.HeadCell> */}
 
           <Table.HeadCell className="font-light">
             Email
@@ -141,7 +141,7 @@ const SuperAgentList = ({
 
               <Table.Cell className="">{superAgent.companyName}</Table.Cell>
               <Table.Cell className="">{superAgent.contactPerson}</Table.Cell>
-              <Table.Cell className="">{superAgent.designation}</Table.Cell>
+              {/* <Table.Cell className="">{superAgent.designation}</Table.Cell> */}
               <Table.Cell className="">{superAgent.email}</Table.Cell>
 
               <Table.Cell className="flex space-x-6">
