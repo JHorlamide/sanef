@@ -96,11 +96,13 @@ const BankListTable = ({
             </div>
           )}
 
-          {banks?.length <= 0 && (
-            <div className="container flex items-center justify-center py-10 mx-auto ml-40">
-              <h1 className="font-semibold">Your bank record is empty!</h1>
-            </div>
-          )}
+          {loading
+            ? null
+            : banks?.length <= 0 && (
+                <div className="container flex items-center justify-center py-10 mx-auto ml-40">
+                  <h1 className="font-semibold">Your bank record is empty!</h1>
+                </div>
+              )}
 
           {banks.map((bank: any) => (
             <Table.Row key={bank._id} className="bg-white">
