@@ -30,8 +30,8 @@ const useGovernment = (pageNumber: number = 0, govPerPage: number = 20) => {
       .then((data) => {
         setLoading(false);
         setError("");
-        setGovernments((prevState) => [...data.governments]);
-        setTotalPage(data.totalGov);
+        setGovernments(data.data.governments);
+        setTotalPage(data.data.totalGov);
       })
       .catch((error: any) => {
         setLoading(false);
