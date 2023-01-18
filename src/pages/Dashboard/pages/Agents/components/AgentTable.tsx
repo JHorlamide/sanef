@@ -93,7 +93,7 @@ const TestTable = ({
         </Table.Head>
         <Table.Body className="divide-y">
           {loading && (
-            <div className="container flex justify-center mx-auto my-8 ml-40 item-center">
+            <div className="container flex justify-center mx-auto my-8 ml-[280px] item-center">
               <Spinner
                 color="success"
                 aria-label="spinner"
