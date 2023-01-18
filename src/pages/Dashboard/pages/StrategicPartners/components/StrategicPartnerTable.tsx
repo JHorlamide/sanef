@@ -91,13 +91,15 @@ const StrategicPartnerTable = ({
             </div>
           )}
 
-          {filteredPartners.length <= 0 && (
-            <div className="container flex items-center justify-center py-10 mx-auto ml-[150px]">
-              <h1 className="font-semibold">
-                Your strategic partner record is empty!
-              </h1>
-            </div>
-          )}
+          {loading
+            ? null
+            : filteredPartners.length <= 0 && (
+                <div className="container flex items-center justify-center py-10 mx-auto ml-[150px]">
+                  <h1 className="font-semibold">
+                    Your strategic partner record is empty!
+                  </h1>
+                </div>
+              )}
 
           {filteredPartners.map((partner) => (
             <Table.Row key={partner._id} className="bg-white">

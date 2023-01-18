@@ -91,11 +91,15 @@ const RegulatorsListTable = ({
             </div>
           )}
 
-          {filteredRegulators.length <= 0 && (
-            <div className="container flex items-center justify-center py-10 mx-auto ml-[150px]">
-              <h1 className="font-semibold">Your regulator record is empty!</h1>
-            </div>
-          )}
+          {loading
+            ? null
+            : filteredRegulators.length <= 0 && (
+                <div className="container flex items-center justify-center py-10 mx-auto ml-[150px]">
+                  <h1 className="font-semibold">
+                    Your regulator record is empty!
+                  </h1>
+                </div>
+              )}
 
           {filteredRegulators.map((regulator: any) => (
             <Table.Row key={regulator._id} className="bg-white">

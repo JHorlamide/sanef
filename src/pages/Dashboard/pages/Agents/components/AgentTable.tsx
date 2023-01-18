@@ -12,14 +12,6 @@ const tableHeadCellList = [
     id: 1,
     title: "Date"
   },
-  // {
-  //   id: 2,
-  //   title: "First Name"
-  // },
-  // {
-  //   id: 3,
-  //   title: "Surname"
-  // },
   {
     id: 4,
     title: "Business Name"
@@ -28,10 +20,6 @@ const tableHeadCellList = [
     id: 5,
     title: "State"
   },
-  // {
-  //   id: 6,
-  //   title: "LGA"
-  // },
   {
     id: 7,
     title: "Email"
@@ -124,11 +112,13 @@ const TestTable = ({
             </div>
           )}
 
-          {filterAgents.length <= 0 && (
-            <div className="container flex items-center justify-center py-10 mx-auto ml-72">
-              <h1 className="font-semibold">Your agent record is empty!</h1>
-            </div>
-          )}
+          {loading
+            ? null
+            : filterAgents.length <= 0 && (
+                <div className="container flex items-center justify-center py-10 mx-auto ml-72">
+                  <h1 className="font-semibold">Your agent record is empty!</h1>
+                </div>
+              )}
 
           {filterAgents.map((agent) => (
             <Table.Row

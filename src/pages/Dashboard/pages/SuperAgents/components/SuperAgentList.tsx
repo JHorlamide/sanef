@@ -121,13 +121,15 @@ const SuperAgentList = ({
             </div>
           )}
 
-          {superAgents.length <= 0 && (
-            <div className="container flex items-center justify-center py-10 mx-auto ml-72">
-              <h1 className="font-semibold">
-                Your super agent record is empty!
-              </h1>
-            </div>
-          )}
+          {loading
+            ? null
+            : superAgents.length <= 0 && (
+                <div className="container flex items-center justify-center py-10 mx-auto ml-72">
+                  <h1 className="font-semibold">
+                    Your super agent record is empty!
+                  </h1>
+                </div>
+              )}
 
           {superAgents.map((superAgent) => (
             <Table.Row key={superAgent._id} className="bg-white">
