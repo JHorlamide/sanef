@@ -8,8 +8,49 @@ import {
 } from "api/strategicPartner";
 import toast from "react-hot-toast";
 import { uploadImage } from "api/upload";
-import { registerNewPartner } from "api/strategicPartner";
+import {
+  registerNewPartner,
+  fetchStrategicPartner
+} from "api/strategicPartner";
 import { IRequest } from "types/strategicPartner";
+import { OUR_PARTNERS_LOGOS } from "pages/OurPartners/content";
+
+export const useFetchStrategicPartners = (
+  pageNumber: number,
+  partnerPerPage: number
+) => {
+  const [strategicPartners, setStrategicPartners] = useState<any[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [totalPages, setTotalPage] = useState(0);
+
+  useEffect(() => {
+    setLoading(true);
+
+    //This will cancel the request when the component unmount
+    const controller = new AbortController();
+    const { signal } = controller;
+
+    fetchStrategicPartner(pageNumber, partnerPerPage, { signal })
+      .then((data) => {
+        setLoading(false);
+        setStrategicPartners(
+          pageNumber === 1
+            ? [
+                ...data.strategicPartners,
+                ...OUR_PARTNERS_LOGOS["Strategic Partners"]
+              ]
+            : [...data.strategicPartners]
+        );
+        setTotalPage(data.totalPartner);
+      })
+      .catch((error: any) => {
+        setLoading(false);
+        if (signal.aborted) return;
+        toast.error(error.message);
+      });
+  }, [pageNumber, partnerPerPage]);
+  return { strategicPartners, loading, totalPages };
+};
 
 const useStrategicPartner = (
   pageNumber: number = 0,

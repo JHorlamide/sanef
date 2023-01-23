@@ -79,236 +79,445 @@ import {
   LGA,
   FORTRESS_BANK_LOGO
 } from "assets/images";
+// import { Banks } from "types/bank";
 
 export const OUR_PARTNERS_LOGOS = {
   Banks: [
     {
-      id: 1,
+      _id: 1,
       name: "ACCESS BANK",
-      logo: ACCESS_BANK
+      logo: {
+        imageUrl: ACCESS_BANK
+      }
     },
     {
-      id: 2,
+      _id: 2,
       name: "CITIBANK",
-      logo: CITY_BANK
+      logo: {
+        imageUrl: CITY_BANK
+      }
     },
     {
-      id: 3,
+      _id: 3,
       name: "ECOBANK",
-      logo: ECOBANK_BANK
+      logo: {
+        imageUrl: ECOBANK_BANK
+      }
     },
     {
-      id: 4,
+      _id: 4,
       name: "FIDELITY BANK",
-      logo: FIDELITY_BANK
+      logo: {
+        imageUrl: FIDELITY_BANK
+      }
     },
     {
-      id: 5,
+      _id: 5,
       name: "FIRST BANK",
-      logo: FIRST_BANK
+      logo: {
+        imageUrl: FIRST_BANK
+      }
     },
     {
-      id: 6,
+      _id: 6,
       name: "FCMB",
-      logo: FCMB_BANK
+      logo: {
+        imageUrl: FCMB_BANK
+      }
     },
     {
-      id: 7,
+      _id: 7,
       name: "FORTRESS MFB",
-      logo: FORTRESS_BANK_LOGO
+      logo: {
+        imageUrl: FORTRESS_BANK_LOGO
+      }
     },
     {
-      id: 8,
+      _id: 8,
       name: "GTBANK",
-      logo: GT_BANK
+      logo: {
+        imageUrl: GT_BANK
+      }
     },
     {
-      id: 9,
+      _id: 9,
       name: "GLOBUS BANK",
-      logo: GLOBUS_BANK
+      logo: {
+        imageUrl: GLOBUS_BANK
+      }
     },
     {
-      id: 10,
+      _id: 10,
       name: "HERITAGE BANK",
-      logo: HERITAGE_BANK
+      logo: {
+        imageUrl: HERITAGE_BANK
+      }
     },
     {
-      id: 11,
+      _id: 11,
       name: "JAIZ BANK",
-      logo: JIAZ_BANK
+      logo: {
+        imageUrl: JIAZ_BANK
+      }
     },
     {
-      id: 12,
+      _id: 12,
       name: "KEYSTONE BANK",
-      logo: KEYSTONE_BANK
+      logo: {
+        imageUrl: KEYSTONE_BANK
+      }
     },
     {
-      id: 13,
+      _id: 13,
       name: "LOTUS BANK",
-      logo: LOTUS_BANK
+      logo: {
+        imageUrl: LOTUS_BANK
+      }
     },
     {
-      id: 14,
+      _id: 14,
       name: "POLARIS BANK",
-      logo: POLARIZE_BANK
+      logo: {
+        imageUrl: POLARIZE_BANK
+      }
     },
     {
-      id: 15,
+      _id: 15,
       name: "PROVIDUS BANK",
-      logo: PROVIDUS_BANK
+      logo: {
+        imageUrl: PROVIDUS_BANK
+      }
     },
     {
-      id: 16,
+      _id: 16,
       name: "STANBIC IBTC",
-      logo: STANBIC_BANK
+      logo: {
+        imageUrl: STANBIC_BANK
+      }
     },
     {
-      id: 17,
+      _id: 17,
       name: "STANDARD \n CHARTERED BANK",
-      logo: STANDARD_CHARTED_BANK
+      logo: {
+        imageUrl: STANDARD_CHARTED_BANK
+      }
     },
     {
-      id: 18,
+      _id: 18,
       name: "STERLING BANK",
-      logo: STERLING_BANK
+      logo: {
+        imageUrl: STERLING_BANK
+      }
     },
     {
-      id: 19,
+      _id: 19,
       name: "SUN TRUST BANK",
-      logo: SUN_TRUST_BANK
+      logo: {
+        imageUrl: SUN_TRUST_BANK
+      }
     },
     {
-      id: 20,
+      _id: 20,
       name: "TAJ BANK",
-      logo: TAJ_BANK
+      logo: {
+        imageUrl: TAJ_BANK
+      }
     },
     {
-      id: 21,
+      _id: 21,
       name: "TITAN TRUST BANK",
-      logo: TITAN_TRUST_BANK
+      logo: {
+        imageUrl: TITAN_TRUST_BANK
+      }
     },
     {
-      id: 22,
+      _id: 22,
       name: "UNITED BANK \n FOR  AFRICA (UBA)",
-      logo: UBA_BANK
+      logo: {
+        imageUrl: UBA_BANK
+      }
     },
     {
-      id: 23,
+      _id: 23,
       name: "UNITY BANK",
-      logo: UNITY_BANK
+      logo: {
+        imageUrl: UNITY_BANK
+      }
     },
     {
-      id: 24,
+      _id: 24,
       name: "UNION BANK",
-      logo: UNION_BANK
+      logo: {
+        imageUrl: UNION_BANK
+      }
     },
     {
-      id: 25,
+      _id: 25,
       name: "WEMA BANK",
-      logo: WEMA_BANK
+      logo: {
+        imageUrl: WEMA_BANK
+      }
     },
     {
-      id: 26,
+      _id: 26,
       name: "ZENITH BANK",
-      logo: ZENITH_BANK
+      logo: {
+        imageUrl: ZENITH_BANK
+      }
     }
   ],
 
   "Super Agents": [
     {
-      id: 1,
+      _id: 1,
       name: "3LINE",
-      logo: THREE_LINE
+      logo: {
+        imageUrl: THREE_LINE
+      }
     },
     {
-      id: 2,
-      name: "ACCELEREX \nNETWORK",
-      logo: ACCELERE
-    },
-    { id: 30, name: "AFRICAVE TECH", logo: KIPPA_PAY_LOGO },
-    {
-      id: 3,
-      name: "CAPRICON DIGITAL",
-      logo: BAXI
+      _id: 2,
+      companyName: "ACCELEREX \nNETWORK",
+      logo: {
+        imageUrl: ACCELERE
+      }
     },
     {
-      id: 4,
-      name: "C24",
-      logo: C_PAY
-    },
-    { id: 12, name: "CONTEC GLOBAL", logo: NOW_NOW },
-    { id: 21, name: "CELLULANT", logo: TINGG },
-    { id: 16, name: "CROWFORCE", logo: PAY_FORCE },
-    { id: 27, name: "CITISERVE", logo: ORANGE_PAY_CITISERVE_LOGO },
-    { id: 28, name: "CALLPHONE", logo: AIRVEND_LOGO },
-    { id: 31, name: "CONNECT POINT", logo: C_POINT_AGENT_CONNECTIONPOINT_LOGO },
-    {
-      id: 8,
-      name: "CINTRUST MFB",
-      logo: KOLOMONI
-    },
-    { id: 26, name: "DOT FINANCIAL \n INCLUSION", logo: DOTPAY_OFFICIAL_LOGO },
-    { id: 15, name: "E-SETTLEMENT GROUP", logo: PAY_CENTER },
-    { id: 18, name: "E-TRANZACT", logo: POCKET_MONI },
-    {
-      id: 24,
-      name: "FAIRMONEY",
-      logo: FAIR_MONEY
+      _id: 30,
+      companyName: "AFRICAVE TECH",
+      logo: {
+        imageUrl: KIPPA_PAY_LOGO
+      }
     },
     {
-      id: 5,
-      name: "FETS",
-      logo: FEST_WALLET
-    },
-    { id: 19, name: "IFIS", logo: QUICK_TELLER },
-    { id: 17, name: "ITEX INTEGRATED \n SERVICES", logo: PAY_VICE },
-    {
-      id: 7,
-      name: "INNOVECTIVES",
-      logo: KASH_EXPRESS
+      _id: 3,
+      companyName: "CAPRICON DIGITAL",
+      logo: {
+        imageUrl: BAXI
+      }
     },
     {
-      id: 6,
-      name: "KADICK INTEGRATED",
-      logo: KADIC
+      _id: 4,
+      companyName: "C24",
+      logo: {
+        imageUrl: C_PAY
+      }
     },
-    { id: 9, name: "LAPO", logo: LAPO },
-    { id: 29, name: "LUKEPORT", logo: E_CASH_LUKEPORT_LOGO },
-    { id: 10, name: "MICROSYSTEMS", logo: M_CASH_POINT },
-    { id: 13, name: "PAGETECH", logo: PAGE },
-    { id: 14, name: "PALMPAY", logo: PALMPAY },
-    { id: 25, name: "PARKWAY READYCASH", logo: READY_CASH },
-    { id: 32, name: "SHAGO PAYMENT", logo: SHAGO_ALERZO_LOGO_ADAPTATION_LOGO },
-    { id: 11, name: "TEAMAPT", logo: MONIE_POINT },
-    { id: 20, name: "TEASY \nINTERNATIONAL", logo: TEASY_PAY },
-    { id: 22, name: "UNIFIED PAYMENTS", logo: UNIFIED_PAYMENT },
     {
-      id: 23,
-      name: "XPRESS PAYMENTS",
-      logo: AEXPRESS_AGENT
+      _id: 12,
+      companyName: "CONTEC GLOBAL",
+      logo: {
+        imageUrl: NOW_NOW
+      }
+    },
+    {
+      _id: 21,
+      companyName: "CELLULANT",
+      logo: {
+        imageUrl: TINGG
+      }
+    },
+    {
+      _id: 16,
+      companyName: "CROWFORCE",
+      logo: {
+        imageUrl: PAY_FORCE
+      }
+    },
+    {
+      _id: 27,
+      companyName: "CITISERVE",
+      logo: {
+        imageUrl: ORANGE_PAY_CITISERVE_LOGO
+      }
+    },
+    {
+      _id: 28,
+      companyName: "CALLPHONE",
+      logo: {
+        imageUrl: AIRVEND_LOGO
+      }
+    },
+    {
+      _id: 31,
+      companyName: "CONNECT POINT",
+      logo: {
+        imageUrl: C_POINT_AGENT_CONNECTIONPOINT_LOGO
+      }
+    },
+    {
+      _id: 8,
+      companyName: "CINTRUST MFB",
+      logo: {
+        imageUrl: KOLOMONI
+      }
+    },
+    {
+      _id: 26,
+      companyName: "DOT FINANCIAL \n INCLUSION",
+      logo: {
+        imageUrl: DOTPAY_OFFICIAL_LOGO
+      }
+    },
+    {
+      _id: 15,
+      companyName: "E-SETTLEMENT GROUP",
+      logo: {
+        imageUrl: PAY_CENTER
+      }
+    },
+    {
+      _id: 18,
+      companyName: "E-TRANZACT",
+      logo: {
+        imageUrl: POCKET_MONI
+      }
+    },
+    {
+      _id: 24,
+      companyName: "FAIRMONEY",
+      logo: {
+        imageUrl: FAIR_MONEY
+      }
+    },
+    {
+      _id: 5,
+      companyName: "FETS",
+      logo: {
+        imageUrl: FEST_WALLET
+      }
+    },
+    {
+      _id: 19,
+      companyName: "IFIS",
+      logo: {
+        imageUrl: QUICK_TELLER
+      }
+    },
+    {
+      _id: 17,
+      companyName: "ITEX INTEGRATED \n SERVICES",
+      logo: {
+        imageUrl: PAY_VICE
+      }
+    },
+    {
+      _id: 7,
+      companyName: "INNOVECTIVES",
+      logo: {
+        imageUrl: KASH_EXPRESS
+      }
+    },
+    {
+      _id: 6,
+      companyName: "KADICK INTEGRATED",
+      logo: {
+        imageUrl: KADIC
+      }
+    },
+    {
+      _id: 9,
+      companyName: "LAPO",
+      logo: {
+        imageUrl: LAPO
+      }
+    },
+    {
+      _id: 29,
+      companyName: "LUKEPORT",
+      logo: {
+        imageUrl: E_CASH_LUKEPORT_LOGO
+      }
+    },
+    {
+      _id: 10,
+      companyName: "MICROSYSTEMS",
+      logo: {
+        imageUrl: M_CASH_POINT
+      }
+    },
+    {
+      _id: 13,
+      companyName: "PAGETECH",
+      logo: {
+        imageUrl: PAGE
+      }
+    },
+    {
+      _id: 14,
+      companyName: "PALMPAY",
+      logo: {
+        imageUrl: PALMPAY
+      }
+    },
+    {
+      _id: 25,
+      companyName: "PARKWAY READYCASH",
+      logo: {
+        imageUrl: READY_CASH
+      }
+    },
+    {
+      _id: 32,
+      companyName: "SHAGO PAYMENT",
+      logo: {
+        imageUrl: SHAGO_ALERZO_LOGO_ADAPTATION_LOGO
+      }
+    },
+    {
+      _id: 11,
+      companyName: "TEAMAPT",
+      logo: {
+        imageUrl: MONIE_POINT
+      }
+    },
+    {
+      _id: 20,
+      companyName: "TEASY \nINTERNATIONAL",
+      logo: {
+        imageUrl: TEASY_PAY
+      }
+    },
+    {
+      _id: 22,
+      companyName: "UNIFIED PAYMENTS",
+      logo: {
+        imageUrl: UNIFIED_PAYMENT
+      }
+    },
+    {
+      _id: 23,
+      companyName: "XPRESS PAYMENTS",
+      logo: {
+        imageUrl: AEXPRESS_AGENT
+      }
     }
   ],
 
-  Regulators: [{ id: 1, name: "CBN", logo: CBN }],
+  Regulators: [{ _id: 1, companyName: "CBN", logo: { imageUrl: CBN } }],
 
   "Strategic Partners": [
-    { id: 1, name: "NIBSS", logo: NIBSS },
-    { id: 2, name: "EFINA", logo: EFINA },
-    { id: 3, name: "GIZ", logo: GIZ },
-    { id: 4, name: "BUSINESSDAY", logo: BUSSINESS_DAY },
-    { id: 5, name: "INTERMAC", logo: INTERMARC },
-    { id: 6, name: "LBS", logo: LBS },
-    { id: 7, name: "AMMBAN", logo: AMMBAN },
-    { id: 8, name: "NESG", logo: NESG_LOGO },
-    { id: 9, name: "FINTECHNGR", logo: FINTECH_NGR }
+    { _id: 1, name: "NIBSS", logo: { imageUrl: NIBSS } },
+    { _id: 2, name: "EFINA", logo: { imageUrl: EFINA } },
+    { _id: 3, name: "GIZ", logo: { imageUrl: GIZ } },
+    { _id: 4, name: "BUSINESSDAY", logo: { imageUrl: BUSSINESS_DAY } },
+    { _id: 5, name: "INTERMAC", logo: { imageUrl: INTERMARC } },
+    { _id: 6, name: "LBS", logo: { imageUrl: LBS } },
+    { _id: 7, name: "AMMBAN", logo: { imageUrl: AMMBAN } },
+    { _id: 8, name: "NESG", logo: { imageUrl: NESG_LOGO } },
+    { _id: 9, name: "FINTECHNGR", logo: { imageUrl: FINTECH_NGR } }
   ],
 
   "Government/MDA'S": [
     {
-      id: 1,
+      _id: 1,
       name: "Federal Ministry of Humanitarian \nAffairs, Disaster Management \nand Social Development",
-      logo: GOVT1
+      logo: { imageUrl: GOVT1 }
     },
-    { id: 2, name: "Lagos State Government", logo: LGA }
+    {
+      _id: 2,
+      name: "Lagos State Government",
+      logo: { imageUrl: LGA }
+    }
   ]
 };

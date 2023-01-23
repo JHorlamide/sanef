@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import GovernmentHeader from "./GovernmentHeader";
 import { IMG_PLACEHOLDER } from "assets/icons";
-import DashboardLayout from "../../../components/DashboardLayout";
-import { DashboardMainView } from "pages/Dashboard/components/Layout";
+import DashboardLayout from "../../../../../components/DashboardLayout";
+import { DashboardMainView } from "components/Layout";
 import CustomBtn from "components/widgets/CustomBtn/CustomBtn";
 import CustomInput from "components/widgets/CustomInput/CustomInput";
 import { GOVERNMENTS } from "routes/ROUTES_CONSTANTS";

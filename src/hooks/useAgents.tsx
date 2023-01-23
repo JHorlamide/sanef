@@ -276,8 +276,6 @@ export const useAgentForm = (state: string, LGA: string | undefined) => {
   };
 
   const onSubmit = async (data: any) => {
-    // e.preventDefault();
-    console.log(data);
     const agentObj: IAgentRequest = {
       email: agentData.email,
       firstName: agentData.firstName,
@@ -429,8 +427,10 @@ export const useRegisterAgent = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors }
   } = useForm();
+
   const navigate = useNavigate();
   const DEFAULT_STATE_TO_FETCH_LGA = "lagos";
   const [superAgents, setSuperAgents] = useState<ISuperAgent[]>([]);
@@ -471,7 +471,6 @@ export const useRegisterAgent = () => {
   }, []);
 
   const onSubmit = (data: any) => {
-    console.log("Form Data: ", { selectedLGA, selectedState, ...data });
     const agentObj: IAgentRequest = {
       email: data.email,
       firstName: data.firstName,
@@ -491,6 +490,7 @@ export const useRegisterAgent = () => {
     registerNewAgentByUser(agentObj)
       .then((response) => {
         toast.success(response.message);
+        reset();
         navigate("/become-agent");
       })
       .catch((error) => {

@@ -8,8 +8,43 @@ import {
 } from "api/regulator";
 import toast from "react-hot-toast";
 import { uploadImage } from "api/upload";
-import { registerNewRegulator } from "api/regulator";
+import { registerNewRegulator, fetchRegulators } from "api/regulator";
 import { IRegulatorRequest } from "types/regulator";
+import { OUR_PARTNERS_LOGOS } from "pages/OurPartners/content";
+
+export const useFetchRegulators = (
+  pageNumber: number,
+  regulatorsPerPage: number
+) => {
+  const [regulators, setRegulators] = useState<any[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [totalPages, setTotalPage] = useState(0);
+
+  useEffect(() => {
+    setLoading(true);
+
+    //This will cancel the request when the component unmount
+    const controller = new AbortController();
+    const { signal } = controller;
+
+    fetchRegulators(pageNumber, regulatorsPerPage, { signal })
+      .then((data) => {
+        setLoading(false);
+        setRegulators(
+          pageNumber === 1
+            ? [...data.regulators, ...OUR_PARTNERS_LOGOS.Regulators]
+            : [...data.regulators]
+        );
+        setTotalPage(data.totalRegulators);
+      })
+      .catch((error: any) => {
+        setLoading(false);
+        if (signal.aborted) return;
+        toast.error(error.message);
+      });
+  }, [pageNumber, regulatorsPerPage]);
+  return { regulators, loading, totalPages };
+};
 
 const useRegulator = (
   pageNumber: number = 0,

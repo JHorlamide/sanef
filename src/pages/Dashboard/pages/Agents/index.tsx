@@ -1,14 +1,14 @@
 import { useState } from "react";
-import DashboardLayout from "../../components/DashboardLayout";
+import DashboardLayout from "../../../../components/DashboardLayout";
 import AgentsHeader from "./components/AgentsHeader";
-import { DashboardMainView } from "pages/Dashboard/components/Layout";
+import { DashboardMainView } from "components/Layout";
 import Analytics from "./components/Analytics";
 import { LONG_HORIZONTAL_LINE } from "assets/icons";
 import TestTable from "./components/AgentTable";
 import { ADD_AGENT } from "routes/ROUTES_CONSTANTS";
 import useAgents from "hooks/useAgents";
 import AgentTableHeader from "./components/AgentTableHeader";
-import Pagination, { TableRecord } from "pages/Dashboard/components/Pagination";
+import Pagination, { TableRecord } from "components/Pagination";
 
 const Agent = () => {
   const [pageNumber, setPageNumber] = useState(0);

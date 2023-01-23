@@ -11,6 +11,7 @@ export interface IPaginationProps {
 }
 
 export interface TableRecordProps {
+  className?: string;
   totalPage: number;
   recordPerPage: number;
   setRecordPerPate: React.Dispatch<React.SetStateAction<number>>;
@@ -18,12 +19,14 @@ export interface TableRecordProps {
 
 export const TableRecord = ({
   totalPage,
+  className,
   recordPerPage,
   setRecordPerPate
 }: TableRecordProps) => {
-  const ItemList = [10, 20, 30, 40, 50];
+  const ItemList = [5, 10, 20, 30, 40, 50];
+
   return (
-    <div className="">
+    <div className={className}>
       <p className="text-[12px] flex">
         Showing{" "}
         <div className="text-right">

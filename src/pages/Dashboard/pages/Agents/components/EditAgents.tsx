@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 import AgentsHeader from "./AgentsHeader";
-import DashboardLayout from "../../../components/DashboardLayout";
-import { DashboardMainView } from "pages/Dashboard/components/Layout";
+import DashboardLayout from "../../../../../components/DashboardLayout";
+import { DashboardMainView } from "components/Layout";
 import CustomBtn from "components/widgets/CustomBtn/CustomBtn";
 import CustomInput from "components/widgets/CustomInput/CustomInput";
 import { SUPER_AGENT } from "routes/ROUTES_CONSTANTS";

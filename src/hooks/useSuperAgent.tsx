@@ -10,8 +10,9 @@ import {
 } from "api/superAgents";
 import { ISuperAgent, IUpdateSuperAgentRequest } from "types/superAgent";
 import { uploadImage } from "api/upload";
-import { registerNewSuperAgent } from "api/superAgents";
+import { registerNewSuperAgent, fetchAllSuperAgents } from "api/superAgents";
 import { ISuperAgentRequest } from "types/superAgent";
+import { OUR_PARTNERS_LOGOS } from "pages/OurPartners/content";
 
 type CompanyLogoType = File | undefined;
 
@@ -27,6 +28,42 @@ interface useSuperAgentFormProps {
   company_logo?: CompanyLogoType;
   company_data?: CompanyDataType;
 }
+
+export const useFetchSuperAgents = (
+  pageNumber: number,
+  superAgentPerPage: number
+) => {
+  const [superAgents, setSuperAgent] = useState<any[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [totalPages, setTotalPage] = useState(0);
+
+  useEffect(() => {
+    setLoading(true);
+
+    //This will cancel the request when the component unmount
+    const controller = new AbortController();
+    const { signal } = controller;
+
+    fetchAllSuperAgents(pageNumber, superAgentPerPage, { signal })
+      .then((data) => {
+        setLoading(false);
+        console.log([data]);
+        setSuperAgent(
+          pageNumber === 1
+            ? [...data.superAgents, ...OUR_PARTNERS_LOGOS["Super Agents"]]
+            : [...data.superAgents]
+        );
+        setTotalPage(data.totalSuperAgents);
+      })
+      .catch((error) => {
+        setLoading(false);
+        if (signal.aborted) return;
+        toast.error(error.message);
+      });
+  }, [pageNumber, superAgentPerPage]);
+
+  return { superAgents, loading, totalPages };
+};
 
 const useSuperAgent = (
   pageNumber: number = 0,

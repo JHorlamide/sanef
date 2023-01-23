@@ -1,5 +1,5 @@
-import DashboardLayout from "../../components/DashboardLayout";
-import { DashboardMainView } from "pages/Dashboard/components/Layout";
+import DashboardLayout from "../../../../components/DashboardLayout";
+import { DashboardMainView } from "components/Layout";
 import AdminHeader from "./Header";
 import Setting from "./Settings";
 

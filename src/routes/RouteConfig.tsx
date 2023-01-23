@@ -33,8 +33,8 @@ import {
   ADD_AGENT,
   EDIT_AGENT
 } from "./ROUTES_CONSTANTS";
-import AuthLayoutAuth from "pages/Dashboard/components/AuthLayout";
-import PersistLogin from "pages/Dashboard/components/PersistLogin";
+import AuthLayoutAuth from "components/AuthLayout";
+import PersistLogin from "components/PersistLogin";
 import NotFound from "pages/NotFound";
 import PreLoader from "components/layout/PreLoader/PreLoader";
 

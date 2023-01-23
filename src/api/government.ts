@@ -1,4 +1,4 @@
-import { axiosPrivate } from "./axios";
+import api, { axiosPrivate } from "./axios";
 import { IGovernmentRequest, IUpdateGovernmentRequest } from "types/government";
 
 export const getAllGovernments = async (
@@ -11,6 +11,19 @@ export const getAllGovernments = async (
     options
   );
   return data;
+};
+
+export const fetchAllGovernments = async (
+  pageNumber: number = 0,
+  govPerPage: number = 20,
+  options = {}
+) => {
+  const { data } = await api.get(
+    `/governments/partners?pageNumber=${pageNumber}&govPerPage=${govPerPage}`,
+    options
+  );
+
+  return data.data;
 };
 
 export const registerGovernment = async (governmentObj: IGovernmentRequest) => {

@@ -1,12 +1,12 @@
 import { useState } from "react";
-import DashboardLayout from "../../components/DashboardLayout";
+import DashboardLayout from "../../../../components/DashboardLayout";
 import GovernmentHeader from "./components/GovernmentHeader";
-import { DashboardMainView } from "pages/Dashboard/components/Layout";
+import { DashboardMainView } from "components/Layout";
 import { ADD_GOVERNMENT } from "routes/ROUTES_CONSTANTS";
 import GovernmentListTable from "./components/GovernmentListTable";
 import useGovernment from "hooks/useGovernmnet";
 import GovernmentTableHeader from "./components/GovernmentTableHeader";
-import Pagination, { TableRecord } from "pages/Dashboard/components/Pagination";
+import Pagination, { TableRecord } from "components/Pagination";
 
 const Government = () => {
   const [pageNumber, setPageNumber] = useState(0);

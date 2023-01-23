@@ -2,7 +2,7 @@ import { IAgentRequest, IUpdateAgent } from "types/agent";
 import api, { axiosPrivate } from "./axios";
 
 export const registerNewAgentByUser = async (agentObj: IAgentRequest) => {
-  const { data } = await api.post("/agents", agentObj);
+  const { data } = await api.post("/agents/website", agentObj);
   return data;
 };
 

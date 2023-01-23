@@ -1,15 +1,28 @@
 import { IRegulatorRequest, IUpdateRegulatorRequest } from "types/regulator";
-import { axiosPrivate } from "./axios";
+import api, { axiosPrivate } from "./axios";
 
 export const getAllRegulators = async (
   pageNumber: number = 0,
-  regulatorPerPage: number = 20,
+  regulatorPerPage: number = 10,
   options = {}
 ) => {
   const { data } = await axiosPrivate.get(
     `/regulators?pageNumber=${pageNumber}&regulatorPerPage=${regulatorPerPage}`,
     options
   );
+  return data.data;
+};
+
+export const fetchRegulators = async (
+  pageNumber: number = 0,
+  regulatorPerPage: number = 10,
+  options = {}
+) => {
+  const { data } = await api.get(
+    `/regulators/partners?pageNumber=${pageNumber}&regulatorPerPage=${regulatorPerPage}`,
+    options
+  );
+
   return data.data;
 };
 

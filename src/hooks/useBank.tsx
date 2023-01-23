@@ -3,8 +3,41 @@ import { useNavigate } from "react-router-dom"; //useLocation
 import { IBank, IUpdateBankRequest } from "types/bank";
 import { getBanks, deleteBank, updateBankDetails } from "api/banks";
 import toast from "react-hot-toast";
-import { createBank } from "api/banks";
+import { createBank, getCreatedBanks } from "api/banks";
 import { uploadImage } from "api/upload";
+import { OUR_PARTNERS_LOGOS } from "pages/OurPartners/content";
+
+export const useFetchBanks = (pageNumber: number, bankPerPage: number) => {
+  const [banks, setBanks] = useState<any[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [totalPages, setTotalPage] = useState(0);
+
+  useEffect(() => {
+    setLoading(true);
+
+    //This will cancel the request when the component unmount
+    const controller = new AbortController();
+    const { signal } = controller;
+
+    getCreatedBanks(pageNumber, bankPerPage, { signal })
+      .then((data) => {
+        setLoading(false);
+        setBanks(
+          pageNumber === 1
+            ? [...data.banks, ...OUR_PARTNERS_LOGOS.Banks]
+            : [...data.banks]
+        );
+        setTotalPage(data.totalBanks);
+      })
+      .catch((error) => {
+        setLoading(false);
+        if (signal.aborted) return;
+        toast.error(error.message);
+      });
+  }, [pageNumber, bankPerPage]);
+
+  return { banks, loading, totalPages };
+};
 
 const useBank = (pageNumber: number = 1, bankPerPage: number = 1) => {
   const navigate = useNavigate();
@@ -222,4 +255,5 @@ export const useBankForm = () => {
     handleBankNameChange
   };
 };
+
 export default useBank;

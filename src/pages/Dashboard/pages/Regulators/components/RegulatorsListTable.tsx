@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Spinner, Table } from "flowbite-react";
 import { DELETE_ICON, EDIT_ICON, FILTER_ICON } from "assets/icons";
 import CustomBtn from "components/widgets/CustomBtn/CustomBtn";
-import DeleteModal from "pages/Dashboard/components/DeleteModal";
+import DeleteModal from "components/DeleteModal";
 import { IRegulator } from "types/regulator";
 
 export interface RegulatorListProps {

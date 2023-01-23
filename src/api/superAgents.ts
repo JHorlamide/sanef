@@ -3,7 +3,7 @@ import api, { axiosPrivate } from "./axios";
 
 export const getAllSuperAgents = async (
   pageNumber: number = 0,
-  superAgentPerPage: number = 20,
+  superAgentPerPage: number = 10,
   options = {}
 ) => {
   const { data } = await axiosPrivate.get(
@@ -15,6 +15,19 @@ export const getAllSuperAgents = async (
 
 export const getAllSuperAgentNames = async (options = {}) => {
   const { data } = await api.get("/super-agents/website");
+  return data.data;
+};
+
+export const fetchAllSuperAgents = async (
+  pageNumber: number = 0,
+  superAgentPerPage: number = 10,
+  options = {}
+) => {
+  const { data } = await api.get(
+    `/super-agents/partners?pageNumber=${pageNumber}&superAgentPerPage=${superAgentPerPage}`,
+    options
+  );
+
   return data.data;
 };
 

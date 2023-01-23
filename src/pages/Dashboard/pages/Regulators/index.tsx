@@ -1,8 +1,8 @@
 import { useState } from "react";
-import DashboardLayout from "../../components/DashboardLayout";
+import DashboardLayout from "../../../../components/DashboardLayout";
 import RegulatorHeader from "./components/RegulatorHeader";
-import { DashboardMainView } from "pages/Dashboard/components/Layout";
-import Pagination, { TableRecord } from "pages/Dashboard/components/Pagination";
+import { DashboardMainView } from "components/Layout";
+import Pagination, { TableRecord } from "components/Pagination";
 import { ADD_REGULATOR } from "routes/ROUTES_CONSTANTS";
 import RegulatorsListTable from "./components/RegulatorsListTable";
 import useRegulator from "hooks/useRegulator";

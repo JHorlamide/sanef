@@ -4,7 +4,7 @@ import CustomBtn from "components/widgets/CustomBtn/CustomBtn";
 import CustomInput from "components/widgets/CustomInput/CustomInput";
 import { AGENTS } from "routes/ROUTES_CONSTANTS";
 import { LONG_HORIZONTAL_LINE } from "assets/icons";
-import DeleteModal from "pages/Dashboard/components/DeleteModal";
+import DeleteModal from "components/DeleteModal";
 import useAdminForm from "../../../../hooks/useAdminform";
 
 const Settings = () => {

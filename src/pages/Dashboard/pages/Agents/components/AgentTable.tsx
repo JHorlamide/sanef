@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Spinner, Table } from "flowbite-react";
 import CustomBtn from "components/widgets/CustomBtn/CustomBtn";
 import { DELETE_ICON, EDIT_ICON } from "assets/icons"; //FILTER_ICON
-import DeleteModal from "pages/Dashboard/components/DeleteModal";
+import DeleteModal from "components/DeleteModal";
 import { IAgent } from "types/agent";
 import dateformat from "dateformat";
 

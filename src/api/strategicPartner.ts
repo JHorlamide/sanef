@@ -1,13 +1,26 @@
 import { IRequest, IUpdateRequest } from "types/strategicPartner";
-import { axiosPrivate } from "./axios";
+import api, { axiosPrivate } from "./axios";
 
 export const getAllPartner = async (
   pageNumber: number = 0,
-  partnerPerPage: number = 20,
+  partnerPerPage: number = 10,
   options = {}
 ) => {
   const { data } = await axiosPrivate.get(
     `/strategic-partners?pageNumber=${pageNumber}&partnerPerPage=${partnerPerPage}`,
+    options
+  );
+
+  return data.data;
+};
+
+export const fetchStrategicPartner = async (
+  pageNumber: number = 0,
+  partnerPerPage: number = 10,
+  options = {}
+) => {
+  const { data } = await api.get(
+    `/strategic-partners/partners?pageNumber=${pageNumber}&partnerPerPage=${partnerPerPage}`,
     options
   );
 

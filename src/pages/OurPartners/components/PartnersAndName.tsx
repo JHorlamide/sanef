@@ -2,34 +2,37 @@ import React from "react";
 interface PartnersAndNameProps {
   sectionName: string;
   logos: {
-    id: number;
-    logo: string;
-    name: string;
+    _id: number | string;
+    logo: {
+      imageUrl: string;
+    };
+    name?: string;
+    companyName?: string;
   }[];
 }
 
 const PartnersAndName = ({ sectionName, logos }: PartnersAndNameProps) => {
   return (
     <section id={sectionName} className="container mt-10">
-      <div className="flex flex-col justify-center items-center md:justify-start md:items-start">
-        <h1 className="text-center text-2xl font-bold md:text-left lg:text-3xl">
+      <div className="flex flex-col items-center justify-center md:justify-start md:items-start">
+        <h1 className="text-2xl font-bold text-center md:text-left lg:text-3xl">
           {sectionName}
         </h1>
-        <hr className="border-b-4 border-buttonColor w-16 mt-2" />
+        <hr className="w-16 mt-2 border-b-4 border-buttonColor" />
       </div>
 
-      <div className="relative flex justify-center items-center mt-8">
+      <div className="relative flex items-center justify-center mt-8">
         <div
           id="slider"
           className="overflow-x-scroll scroll whitespace-nowrap scroll-smooth"
         >
-          {logos.map(({ id, logo, name }) => (
+          {logos.map(({ _id, logo, name }) => (
             <div
-              key={id}
-              className="inline-block align-top flex-col space-y-2 justify-center items-center px-3 bg-clip-content"
+              key={_id}
+              className="flex-col items-center justify-center inline-block px-3 space-y-2 align-top bg-clip-content"
             >
-              <div className="bg-white p-4 m-0 rounded-full">
-                <img className="w-20 h-20 m-0" src={logo} alt={name} />
+              <div className="p-4 m-0 bg-white rounded-full">
+                <img className="w-20 h-20 m-0" src={logo.imageUrl} alt={name} />
               </div>
 
               <div>

@@ -11,24 +11,6 @@ import { BsCheck2 } from "react-icons/bs";
 import { HiOutlineChevronDown } from "react-icons/hi";
 import { useRegisterAgent } from "hooks/useAgents";
 
-// import { StateType } from "hooks/useStateLga";
-// import useStateLga from "hooks/useStateLga";
-// import { registerNewAgentByUser } from "api/agents";
-// import { IAgentRequest } from "types/agent";
-// import toast from "react-hot-toast";
-
-// interface FormData {
-//   firstName: string;
-//   lastName: string;
-//   email: string;
-//   gender: string;
-//   businessName: string;
-//   superAgent: string;
-//   proposedAgencyService: string;
-//   preferredPhoneNumber: string;
-//   alternatePhoneNumber: string;
-// }
-
 const Agent = () => {
   const {
     query,
@@ -520,13 +502,7 @@ const Agent = () => {
                 className="w-full py-3 border border-gray-300 rounded-full outline-buttonColor focus:border-buttonColor focus:ring-buttonColor"
                 selectProps={{
                   name: "superAgent"
-                  // value: formData.superAgent,
-                  // onChange: handleChange
                 }}
-                // selectOptions={[
-                //   { value: "", name: "Business Name" },
-                //   { value: "Flutterwave", name: "Flutterwave" }
-                // ]}
                 selectOptions={superAgents.map((superAgent) => {
                   return {
                     value: superAgent.companyName,

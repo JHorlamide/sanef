@@ -1,4 +1,4 @@
-import DashboardHeader from "pages/Dashboard/components/Layout";
+import DashboardHeader from "components/Layout";
 
 const AgentsHeader = () => {
   return (

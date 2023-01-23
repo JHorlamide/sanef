@@ -1,12 +1,12 @@
 import { useState } from "react";
-import DashboardLayout from "../../components/DashboardLayout";
+import DashboardLayout from "../../../../components/DashboardLayout";
 import StrategicPartnerHeader from "./components/StrategicPartnerHeader";
-import { DashboardMainView } from "../../components/Layout";
+import { DashboardMainView } from "../../../../components/Layout";
 import { ADD_STRATEGIC_PARTNERS } from "routes/ROUTES_CONSTANTS";
 import StrategicPartnerTable from "./components/StrategicPartnerTable";
 import StrategicPartnerTableHeader from "./components/StrategicPartnerTableHeader";
 import useStrategicPartner from "hooks/useStrategicPartner";
-import Pagination, { TableRecord } from "pages/Dashboard/components/Pagination";
+import Pagination, { TableRecord } from "components/Pagination";
 
 const StrategicPartner = () => {
   const [pageNumber, setPageNumber] = useState(0);

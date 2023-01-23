@@ -27,3 +27,11 @@ export type IUpdateBankRequest = {
 export type IBankDetails = {
   _id: string;
 };
+
+export interface Banks {
+  _id: string;
+  name: string;
+  logo: {
+    imageUrl: string;
+  };
+}

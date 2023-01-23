@@ -57,11 +57,11 @@ const BoardModal = ({
                     overflow-hidden rounded-2xl bg-white px-12 md:px-10 py-6 text-left align-middle
                     shadow-xl transition-all"
                 >
-                  <div className="flex flex-col items-center justify-center md:flex-row md:items-start">
+                  <div className="flex flex-col items-center justify-center md:space-x-10 md:flex-row md:items-start">
                     <Image
                       image={image}
-                      parentClassName="w-full flex justify-center items-center md:justify-start md:items-start md:mx-0 md:w-1/6"
-                      imageClassName="w-[100px] h-[100px] object-cover rounded-2xl"
+                      parentClassName="w-[200px] h-[150px] flex justify-center items-center md:justify-start md:items-start md:mx-0 md:w-1/6"
+                      imageClassName="w-full h-full object-cover rounded-2xl"
                     />
 
                     {/* <div className="w-full mt-2 md:mt-2 md:w-5/6 md:space-y-8"> */}

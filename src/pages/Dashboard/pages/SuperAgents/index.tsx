@@ -1,9 +1,9 @@
 import { useState } from "react";
-import DashboardLayout from "../../components/DashboardLayout";
+import DashboardLayout from "../../../../components/DashboardLayout";
 import Analytics from "./components/Analytics";
 import SuperAgentHeader from "./components/SuperAgentHeader";
-import { DashboardMainView } from "pages/Dashboard/components/Layout";
-import Pagination, { TableRecord } from "pages/Dashboard/components/Pagination";
+import { DashboardMainView } from "components/Layout";
+import Pagination, { TableRecord } from "components/Pagination";
 import SuperAgentList from "./components/SuperAgentList";
 import { LONG_HORIZONTAL_LINE } from "assets/icons";
 import { ADD_SUPER_AGENT } from "routes/ROUTES_CONSTANTS";

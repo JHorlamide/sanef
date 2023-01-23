@@ -1,12 +1,12 @@
 import { useState } from "react";
-import DashboardLayout from "../../components/DashboardLayout";
+import DashboardLayout from "../../../../components/DashboardLayout";
 import BankListTable from "./components/BankListTable";
-import { DashboardMainView } from "pages/Dashboard/components/Layout";
+import { DashboardMainView } from "components/Layout";
 import { ADD_BANK } from "routes/ROUTES_CONSTANTS";
 import BankHeader from "./components/BankHeader";
 import useBank from "hooks/useBank";
 import BankTableHeader from "./components/BankTableHeader";
-import Pagination, { TableRecord } from "pages/Dashboard/components/Pagination";
+import Pagination, { TableRecord } from "components/Pagination";
 
 const BankManager = () => {
   const [pageNumber, setPageNumber] = useState(1);

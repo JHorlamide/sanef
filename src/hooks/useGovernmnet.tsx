@@ -8,8 +8,44 @@ import {
 } from "api/government";
 import toast from "react-hot-toast";
 import { uploadImage } from "api/upload";
-import { registerGovernment } from "api/government";
+import { registerGovernment, fetchAllGovernments } from "api/government";
 import { IGovernmentRequest } from "types/government";
+import { OUR_PARTNERS_LOGOS } from "pages/OurPartners/content";
+
+export const useFetchGovernments = (
+  pageNumber: number,
+  bankPerPage: number
+) => {
+  const [governments, setGovernments] = useState<any[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [totalGov, setTotalGov] = useState(0);
+
+  useEffect(() => {
+    setLoading(true);
+
+    //This will cancel the request when the component unmount
+    const controller = new AbortController();
+    const { signal } = controller;
+
+    fetchAllGovernments(pageNumber, bankPerPage, { signal })
+      .then((data) => {
+        setLoading(false);
+        setGovernments(
+          pageNumber === 1
+            ? [...data.governments, ...OUR_PARTNERS_LOGOS["Government/MDA'S"]]
+            : [...data.governments]
+        );
+        setTotalGov(data.totalGov);
+      })
+      .catch((error) => {
+        setLoading(false);
+        if (signal.aborted) return;
+        toast.error(error.message);
+      });
+  }, [pageNumber, bankPerPage]);
+
+  return { governments, loading, totalGov };
+};
 
 const useGovernment = (pageNumber: number = 0, govPerPage: number = 20) => {
   const navigate = useNavigate();
