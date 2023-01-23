@@ -183,7 +183,7 @@ export const BOARD_CONTENT = {
     {
       id: 3,
       image: ADEOLU_ADEOSUN,
-      name: "Adeolu Adeosun - BSC, MBA, ACA, ACIT DIP IFRS ACMA, CGMA",
+      name: "Adeolu Adeosun",
       position: "CHIEF FINANCIAL OFFICER",
       shortBio: `Adeolu is the Chief Financial Officer and head of Corporate Services at Shared Agent Network Expansion...`,
       shortBio2: `Adeolu is the Chief Financial Officer and head of Corporate Services at Shared Agent Network Expansion Facilities Limited (SANEF). He has over 17...`,

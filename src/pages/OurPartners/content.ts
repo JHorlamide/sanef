@@ -48,7 +48,7 @@ import {
   PAY_CENTER,
   POCKET_MONI,
   QUICK_TELLER,
-  READY_CASH,
+  PARKWAY,
   TEASY_PAY,
   UNIFIED_PAYMENT,
   TINGG,
@@ -454,7 +454,7 @@ export const OUR_PARTNERS_LOGOS = {
       _id: 25,
       companyName: "PARKWAY READYCASH",
       logo: {
-        imageUrl: READY_CASH
+        imageUrl: PARKWAY
       }
     },
     {

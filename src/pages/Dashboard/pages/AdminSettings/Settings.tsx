@@ -26,7 +26,7 @@ const Settings = () => {
         isOpen={isOpen}
         closeModal={closeModal}
         actionText={"Request Password Reset"}
-        modalHeading={"Update Password"}
+        modalHeading={"Update Password Ola"}
         subText={"You will receive a password reset link in your mailbox"}
         deleteAction={() => alert("testing")}
       />
@@ -119,6 +119,7 @@ const Settings = () => {
               <CustomBtn
                 className="text-buttonColor text-[14px] font-semibold"
                 onClick={openModal}
+                type="button"
               >
                 Update Password
               </CustomBtn>
