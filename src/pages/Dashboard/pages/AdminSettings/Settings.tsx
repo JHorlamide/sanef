@@ -26,7 +26,7 @@ const Settings = () => {
         isOpen={isOpen}
         closeModal={closeModal}
         actionText={"Request Password Reset"}
-        modalHeading={"Update Password Ola"}
+        modalHeading={"Update Password"}
         subText={"You will receive a password reset link in your mailbox"}
         deleteAction={() => alert("testing")}
       />
