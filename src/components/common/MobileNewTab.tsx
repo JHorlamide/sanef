@@ -41,7 +41,7 @@ export default function MobileNewTab() {
               <CustomCard
                 key={post._id}
                 id={post._id}
-                date={moment(post?.date).format("LLL")}
+                date={moment(post?.date).format("MMM Do YY")}
                 image={urlFor(post?.image ?? post?.image).toString()}
                 headLine={post.headLine}
                 details={post.details}

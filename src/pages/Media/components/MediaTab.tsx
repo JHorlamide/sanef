@@ -36,7 +36,7 @@ const NewsTab = () => {
         <CustomCard
           key={post._id}
           id={post._id}
-          date={moment(post?.date).format("LLL")}
+          date={moment(post?.date).format("MMM Do YY")}
           image={urlFor(post?.image)}
           headLine={post.headLine}
           details={post.details}
@@ -86,7 +86,7 @@ const GalleryTab = () => {
 
               <div className="absolute space-y-3 bottom-8 left-10">
                 <p className="text-[12px]">
-                  {moment(gallery.date).format("MM/DD/YYYY")}
+                  {moment(gallery.date).format("MMM Do YY")}
                 </p>
                 <h1 className={`text-[28px] font-bold`}>{gallery.eventName}</h1>
               </div>

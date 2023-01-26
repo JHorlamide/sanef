@@ -68,7 +68,9 @@ const NewsDetails = () => {
                 <IoIosArrowBack size={22} className="ml-1 mt-0.5 text-sm" />
               }
             />
-            <p className="text-[12px] ">{moment(data?.date).format("LLL")}</p>
+            <p className="text-[12px] ">
+              {moment(data?.date).format("MMM Do YY")}
+            </p>
           </div>
 
           {/* Article Headline */}

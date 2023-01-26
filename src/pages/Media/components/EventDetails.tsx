@@ -37,20 +37,22 @@ const EventDetails = () => {
     <Layout>
       <GalleryModal images={data.image} isOpen={isOpen} setIsOpen={setIsOpen} />
 
-      <header className="bg-gradient-to-r from-lightBlue to-darkBlue align-top pb-2">
+      <header className="pb-2 align-top bg-gradient-to-r from-lightBlue to-darkBlue">
         <Navbar />
       </header>
 
-      <section className="container mx-auto pt-3 px-8 md:px-0">
-        <div className="flex flex-col space-y-4 w-full">
-          <div className="flex flex-col justify-start items-start">
-            <p className="text-[12px]">{moment(data.date).format("LLL")}</p>
+      <section className="container px-8 pt-3 mx-auto md:px-0">
+        <div className="flex flex-col w-full space-y-4">
+          <div className="flex flex-col items-start justify-start">
+            <p className="text-[12px]">
+              {moment(data.date).format("MMM Do YY")}
+            </p>
             <h1 className="text-buttonColor text-[26px] leading-[39px] font-bold">
               {data.eventName}
             </h1>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 pb-10">
+          <div className="grid grid-cols-1 gap-5 pb-10 md:grid-cols-2 lg:grid-cols-3">
             {data.image.map((imgSrc, index) => (
               <div
                 key={index}
