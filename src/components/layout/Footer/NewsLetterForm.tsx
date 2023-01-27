@@ -27,8 +27,6 @@ const NewsLetterForm = ({ status, message, onValidated }: NewsLetterProps) => {
 
     const isFormValidated = onValidated({ EMAIL: email });
 
-    console.log(isFormValidated);
-
     setEmail("");
     // On success return true
     return email && email.indexOf("@") > -1 && isFormValidated;
@@ -37,10 +35,10 @@ const NewsLetterForm = ({ status, message, onValidated }: NewsLetterProps) => {
   return (
     <Fragment>
       {/* SUCCESS SUBSCRIPTION MESSAGE */}
-      <div className="context mx-auto flex justify-center">
+      <div className="flex justify-center mx-auto context">
         {status === "success" && (
           <div
-            className="text-buttonColor font-bold pt-2"
+            className="pt-2 font-bold text-buttonColor"
             dangerouslySetInnerHTML={{ __html: message as string }}
           />
         )}
@@ -48,7 +46,7 @@ const NewsLetterForm = ({ status, message, onValidated }: NewsLetterProps) => {
 
       {/* SUBSCRIPTION FORM */}
       <form
-        className="flex justify-center items-center space-x-5"
+        className="flex items-center justify-center space-x-5"
         onSubmit={handleSubmit}
       >
         <CustomInput
@@ -76,17 +74,17 @@ const NewsLetterForm = ({ status, message, onValidated }: NewsLetterProps) => {
       </form>
 
       {/* ERROR MESSAGE */}
-      <div className="container mx-auto flex justify-center pt-1">
+      <div className="container flex justify-center pt-1 mx-auto">
         {error && (
           <div
-            className="text-red-500 font-bold"
+            className="font-bold text-red-500"
             dangerouslySetInnerHTML={{ __html: error }}
           />
         )}
 
         {status === "error" ? (
           <div
-            className="text-red-500 font-bold"
+            className="font-bold text-red-500"
             dangerouslySetInnerHTML={{
               __html: message as string
             }}

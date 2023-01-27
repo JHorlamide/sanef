@@ -26,7 +26,9 @@ const Agent = () => {
     setSelectedLGA,
     selectedLGA,
     selectedState,
-    superAgents
+    filterSuperAgents,
+    selectedSuperAgent,
+    setSelectedSuperAgent
   } = useRegisterAgent();
 
   return (
@@ -493,26 +495,86 @@ const Agent = () => {
             </div>
 
             {/* PREFERRED SUPER AGENT */}
-            <div className="space-y-2">
-              <label htmlFor="superAgent">
-                Choose Your Preferred Super Agent
-              </label>
-              <CustomSelect
-                id="superAgent"
-                className="w-full py-3 border border-gray-300 rounded-full outline-buttonColor focus:border-buttonColor focus:ring-buttonColor"
-                selectProps={{
-                  name: "superAgent"
-                }}
-                selectOptions={superAgents.map((superAgent) => {
-                  return {
-                    value: superAgent.companyName,
-                    name: superAgent!.companyName
-                  };
-                })}
-                selectPlaceholder="Business Name"
-                errors={errors}
-                register={register}
-              />
+            <div className="container flex flex-col space-y-10 md:space-y-0 md:space-x-4 md:flex-row">
+              <div className="z-10 w-full space-y-2">
+                <label htmlFor="state">Choose Your Preferred Super Agent</label>
+                <Combobox
+                  value={selectedSuperAgent}
+                  onChange={setSelectedSuperAgent}
+                >
+                  <div className="relative mt-1">
+                    <Combobox.Input
+                      placeholder="Search super agents"
+                      className="w-full py-3 border border-gray-300 rounded-full outline-buttonColor focus:border-buttonColor focus:ring-buttonColor"
+                      displayValue={(superAgent: any) => superAgent}
+                      onChange={(event) => setQuery(event.target.value)}
+                    />
+
+                    <Combobox.Button className="absolute inset-y-0 right-0 flex items-center pr-2">
+                      <HiOutlineChevronDown
+                        className="w-5 h-5 text-gray-400"
+                        aria-hidden="true"
+                      />
+                    </Combobox.Button>
+
+                    <Transition
+                      as={Fragment}
+                      leave="transition ease-in duration-100"
+                      leaveFrom="opacity-100"
+                      leaveTo="opacity-0"
+                      afterLeave={() => setQuery("")}
+                    >
+                      <Combobox.Options className="absolute w-full py-1 mt-1 overflow-auto text-base bg-white rounded-md shadow-lg max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                        {filterSuperAgents.length === 0 && query !== "" ? (
+                          <div className="relative px-4 py-2 text-gray-700 cursor-default select-none">
+                            Nothing found.
+                          </div>
+                        ) : (
+                          filterSuperAgents.map((superAgent) => (
+                            <Combobox.Option
+                              key={superAgent._id}
+                              className={({ active }) =>
+                                `relative cursor-default select-none py-2 pl-10 pr-4 ${
+                                  active
+                                    ? "bg-buttonColor text-white"
+                                    : "text-gray-900"
+                                }`
+                              }
+                              value={superAgent.companyName}
+                            >
+                              {({ selected, active }) => (
+                                <>
+                                  <span
+                                    className={`block truncate ${
+                                      selected ? "font-medium" : "font-normal"
+                                    }`}
+                                  >
+                                    {superAgent.companyName}
+                                  </span>
+                                  {selected ? (
+                                    <span
+                                      className={`absolute inset-y-0 left-0 flex items-center pl-3 ${
+                                        active
+                                          ? "text-white"
+                                          : "text-buttonColor"
+                                      }`}
+                                    >
+                                      <BsCheck2
+                                        className="w-5 h-5"
+                                        aria-hidden="true"
+                                      />
+                                    </span>
+                                  ) : null}
+                                </>
+                              )}
+                            </Combobox.Option>
+                          ))
+                        )}
+                      </Combobox.Options>
+                    </Transition>
+                  </div>
+                </Combobox>
+              </div>
             </div>
 
             <CustomBtn className="w-full px-5 py-3 font-semibold text-white rounded-full bg-buttonColor hover:bg-lightGreen">
@@ -526,3 +588,23 @@ const Agent = () => {
 };
 
 export default Agent;
+
+//  <div className="space-y-2">
+//    <label htmlFor="superAgent">Choose Your Preferred Super Agent</label>
+//    <CustomSelect
+//      id="superAgent"
+//      className="w-full py-3 border border-gray-300 rounded-full outline-buttonColor focus:border-buttonColor focus:ring-buttonColor"
+//      selectProps={{
+//        name: "superAgent"
+//      }}
+//      selectOptions={superAgents.map((superAgent) => {
+//        return {
+//          value: superAgent.companyName,
+//          name: superAgent!.companyName
+//        };
+//      })}
+//      selectPlaceholder="Business Name"
+//      errors={errors}
+//      register={register}
+//    />
+//  </div>;

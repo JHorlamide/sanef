@@ -21,9 +21,7 @@ const ResetPassword = () => {
     setConfirmPassword(confirmPassword === "password" ? "text" : "password");
   };
 
-  const onSubmit = (data: FieldValues) => {
-    console.log(data);
-  };
+  const onSubmit = (data: FieldValues) => {};
 
   return (
     <div className="container mx-auto">

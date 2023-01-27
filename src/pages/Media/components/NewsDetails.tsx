@@ -68,9 +68,7 @@ const NewsDetails = () => {
                 <IoIosArrowBack size={22} className="ml-1 mt-0.5 text-sm" />
               }
             />
-            <p className="text-[12px] ">
-              {moment(data?.date).format("MMM Do YY")}
-            </p>
+            <p className="text-[12px] ">{moment(data?.date).format("LL")}</p>
           </div>
 
           {/* Article Headline */}
@@ -113,7 +111,7 @@ const NewsDetails = () => {
             <RecentCard
               id={post._id}
               key={post._id}
-              date={moment(post.date).format("LLL")}
+              date={moment(post.date).format("LL")}
               image={urlFor(post.image)}
               headLine={post.headLine}
               details={post.details}

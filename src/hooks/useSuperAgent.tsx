@@ -47,7 +47,6 @@ export const useFetchSuperAgents = (
     fetchAllSuperAgents(pageNumber, superAgentPerPage, { signal })
       .then((data) => {
         setLoading(false);
-        console.log([data]);
         setSuperAgent(
           pageNumber === 1
             ? [...data.superAgents, ...OUR_PARTNERS_LOGOS["Super Agents"]]

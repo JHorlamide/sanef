@@ -13,7 +13,6 @@ const ForgotPassword = () => {
   } = useForm();
 
   const onSubmit = async (data: any) => {
-    console.log(data);
     alert("Password request sent!");
   };
 

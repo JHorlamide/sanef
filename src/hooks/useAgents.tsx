@@ -25,6 +25,7 @@ type MonthType = {
 };
 
 interface ISuperAgent {
+  _id: string;
   companyName: string;
 }
 
@@ -40,6 +41,29 @@ export type AgentType = {
   preferredPhoneNumber: string;
   alternativePhoneNumber: string;
   proposedAgentService: String;
+};
+
+const useFetchSuperAgents = () => {
+  const [superAgents, setSuperAgents] = useState<ISuperAgent[]>([]);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    const { signal } = controller;
+
+    getAllSuperAgentNames({ signal })
+      .then((response) => {
+        setSuperAgents(response);
+      })
+      .catch((error) => {
+        if (error.response) {
+          return toast.error(error.response.data.message);
+        }
+
+        toast.error(error.message);
+      });
+  }, []);
+
+  return { superAgents };
 };
 
 const useAgents = (pageNumber: number = 0, agentPerPage: number = 20) => {
@@ -292,8 +316,6 @@ export const useAgentForm = (state: string, LGA: string | undefined) => {
       proposedAgentService: agentData.proposedAgentService
     };
 
-    console.log(agentObj.createdDate);
-
     registerNewAgent(agentObj)
       .then((response) => {
         toast.success(response.message);
@@ -377,7 +399,6 @@ export const useEditAgentForm = (agentId: string | undefined) => {
   };
 
   const onSubmit = async (data: any) => {
-    console.log(data);
     const agentObj: IUpdateAgent = {
       id: agentId,
       email: agentData.email,
@@ -433,42 +454,31 @@ export const useRegisterAgent = () => {
 
   const navigate = useNavigate();
   const DEFAULT_STATE_TO_FETCH_LGA = "lagos";
-  const [superAgents, setSuperAgents] = useState<ISuperAgent[]>([]);
   const [stateToFetchLGA, setStateToFetchLGA] = useState<string>("");
 
+  const { superAgents } = useFetchSuperAgents();
   const { statesList, LGAsList } = useStateLGA(
     stateToFetchLGA ? stateToFetchLGA : DEFAULT_STATE_TO_FETCH_LGA
   );
 
   const [query, setQuery] = useState("");
+  const [selectedSuperAgent, setSelectedSuperAgent] = useState(superAgents[0]);
   const [selectedState, setSelectedState] = useState<StateType>(statesList[0]);
   const [selectedLGA, setSelectedLGA] = useState(LGAsList && LGAsList[0]);
   const regex = new RegExp(`${query}`, "gi");
 
-  const filterState =
+  const filteredState =
     query === ""
       ? statesList
       : statesList.filter((state) => state.name.match(regex));
 
-  const filterLGA =
+  const filteredLGA =
     query === "" ? LGAsList : LGAsList?.filter((lga) => lga.match(regex));
 
-  useEffect(() => {
-    const controller = new AbortController();
-    const { signal } = controller;
-
-    getAllSuperAgentNames({ signal })
-      .then((response) => {
-        setSuperAgents(response);
-      })
-      .catch((error) => {
-        if (error.response) {
-          return toast.error(error.response.data.message);
-        }
-
-        toast.error(error.message);
-      });
-  }, []);
+  const filteredSuperAgents =
+    query === ""
+      ? superAgents
+      : superAgents.filter((superAgent) => superAgent.companyName.match(regex));
 
   const onSubmit = (data: any) => {
     const agentObj: IAgentRequest = {
@@ -481,7 +491,7 @@ export const useRegisterAgent = () => {
       approved: false,
       createdDate: new Date(),
       gender: data.gender,
-      choiceOfSuperAgent: data.superAgent,
+      choiceOfSuperAgent: JSON.stringify(selectedSuperAgent),
       preferredPhoneNumber: data.preferredPhoneNumber,
       alternativePhoneNumber: data.alternatePhoneNumber,
       proposedAgentService: data.proposedAgencyService
@@ -506,18 +516,39 @@ export const useRegisterAgent = () => {
     query,
     selectedLGA,
     selectedState,
+    selectedSuperAgent,
     register,
     errors,
     onSubmit,
     handleSubmit,
-    filterLGA,
-    filterState,
-    superAgents,
+    filterLGA: filteredLGA,
+    filterState: filteredState,
+    filterSuperAgents: filteredSuperAgents,
     setStateToFetchLGA,
     setQuery,
     setSelectedState,
-    setSelectedLGA
+    setSelectedLGA,
+    setSelectedSuperAgent
   };
 };
 
 export default useAgents;
+
+// const [superAgents, setSuperAgents] = useState<ISuperAgent[]>([]);
+
+//  useEffect(() => {
+//    const controller = new AbortController();
+//    const { signal } = controller;
+
+//    getAllSuperAgentNames({ signal })
+//      .then((response) => {
+//        setSuperAgents(response);
+//      })
+//      .catch((error) => {
+//        if (error.response) {
+//          return toast.error(error.response.data.message);
+//        }
+
+//        toast.error(error.message);
+//      });
+//  }, []);

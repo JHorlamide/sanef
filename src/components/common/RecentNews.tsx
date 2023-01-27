@@ -29,7 +29,7 @@ const RecentNews = () => {
         <RecentCard
           id={post._id}
           key={post._id}
-          date={moment(post?.date).format("MMM Do YY")}
+          date={moment(post?.date).format("LL")}
           image={urlFor(post?.image)}
           headLine={post.headLine}
           details={post.details}

@@ -44,9 +44,7 @@ const EventDetails = () => {
       <section className="container px-8 pt-3 mx-auto md:px-0">
         <div className="flex flex-col w-full space-y-4">
           <div className="flex flex-col items-start justify-start">
-            <p className="text-[12px]">
-              {moment(data.date).format("MMM Do YY")}
-            </p>
+            <p className="text-[12px]">{moment(data.date).format("LL")}</p>
             <h1 className="text-buttonColor text-[26px] leading-[39px] font-bold">
               {data.eventName}
             </h1>

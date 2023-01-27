@@ -230,8 +230,6 @@ export const useGovernmentForm = () => {
 
     try {
       const response = await registerGovernment(governmentObj);
-      console.log("I was clicked");
-
       if (response.status === "Success") {
         toast.success(response.message);
         navigate("/governments");
