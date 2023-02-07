@@ -496,7 +496,7 @@ const Agent = () => {
 
             {/* PREFERRED SUPER AGENT */}
             <div className="container flex flex-col space-y-10 md:space-y-0 md:space-x-4 md:flex-row">
-              <div className="z-10 w-full space-y-2">
+              <div className="w-full space-y-2">
                 <label htmlFor="state">Choose Your Preferred Super Agent</label>
                 <Combobox
                   value={selectedSuperAgent}

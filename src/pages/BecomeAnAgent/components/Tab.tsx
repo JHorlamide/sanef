@@ -23,7 +23,7 @@ const AgentTab = () => {
                 )
               }
             >
-              Super Agents
+              Agents
             </Tab>
 
             <Tab
@@ -37,18 +37,18 @@ const AgentTab = () => {
                 )
               }
             >
-              Agents
+              Super Agents
             </Tab>
           </div>
         </Tab.List>
 
         <Tab.Panels className={"mt-8 md:mt-12"}>
           <Tab.Panel className={"px-5"}>
-            <SuperAgent />
+            <Agent />
           </Tab.Panel>
 
           <Tab.Panel>
-            <Agent />
+            <SuperAgent />
           </Tab.Panel>
         </Tab.Panels>
       </Tab.Group>
