@@ -48,7 +48,7 @@ import {
   PAY_CENTER,
   POCKET_MONI,
   QUICK_TELLER,
-  PARKWAY,
+  // PARKWAY,
   TEASY_PAY,
   UNIFIED_PAYMENT,
   TINGG,
@@ -270,7 +270,7 @@ export const OUR_PARTNERS_LOGOS = {
   "Super Agents": [
     {
       _id: 1,
-      name: "3LINE",
+      companyName: "3LINE",
       logo: {
         imageUrl: THREE_LINE
       }
@@ -450,13 +450,13 @@ export const OUR_PARTNERS_LOGOS = {
         imageUrl: PALMPAY
       }
     },
-    {
-      _id: 25,
-      companyName: "PARKWAY READYCASH",
-      logo: {
-        imageUrl: PARKWAY
-      }
-    },
+    // {
+    //   _id: 25,
+    //   companyName: "PARKWAY READYCASH",
+    //   logo: {
+    //     imageUrl: PARKWAY
+    //   }
+    // },
     {
       _id: 32,
       companyName: "SHAGO PAYMENT",

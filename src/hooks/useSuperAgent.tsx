@@ -49,9 +49,20 @@ export const useFetchSuperAgents = (
         setLoading(false);
         setSuperAgent(
           pageNumber === 1
-            ? [...data.superAgents, ...OUR_PARTNERS_LOGOS["Super Agents"]]
-            : [...data.superAgents]
+            ? [...data.superAgents, ...OUR_PARTNERS_LOGOS["Super Agents"]].sort(
+                (a, b) => {
+                  if (a.companyName < b.companyName) return -1;
+                  if (a.companyName > b.companyName) return 1;
+                  return 0;
+                }
+              )
+            : [...data.superAgents].sort((a, b) => {
+                if (a.companyName < b.companyName) return -1;
+                if (a.companyName > b.companyName) return 1;
+                return 0;
+              })
         );
+
         setTotalPage(data.totalSuperAgents);
       })
       .catch((error) => {
